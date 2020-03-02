@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4BC5527E102546EBF1FB0B24 /* Pods_SwindExamples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23D7376C417358F81E04598F /* Pods_SwindExamples.framework */; };
 		948891F5240D76C6000FBE60 /* Swind.h in Headers */ = {isa = PBXBuildFile; fileRef = 948891F3240D76C6000FBE60 /* Swind.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		94889202240D7716000FBE60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94889201240D7716000FBE60 /* AppDelegate.swift */; };
 		94889204240D7716000FBE60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94889203240D7716000FBE60 /* SceneDelegate.swift */; };
@@ -17,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23D7376C417358F81E04598F /* Pods_SwindExamples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwindExamples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3956EDB494989977C66E303A /* Pods-SwindExamples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwindExamples.debug.xcconfig"; path = "Target Support Files/Pods-SwindExamples/Pods-SwindExamples.debug.xcconfig"; sourceTree = "<group>"; };
+		8A4CDDF1BFB6F32BF2580DF7 /* Pods-SwindExamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwindExamples.release.xcconfig"; path = "Target Support Files/Pods-SwindExamples/Pods-SwindExamples.release.xcconfig"; sourceTree = "<group>"; };
 		948891F0240D76C6000FBE60 /* Swind.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swind.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		948891F3240D76C6000FBE60 /* Swind.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Swind.h; sourceTree = "<group>"; };
 		948891F4240D76C6000FBE60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -42,18 +46,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BC5527E102546EBF1FB0B24 /* Pods_SwindExamples.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55FF046996CC6E09325B9178 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3956EDB494989977C66E303A /* Pods-SwindExamples.debug.xcconfig */,
+				8A4CDDF1BFB6F32BF2580DF7 /* Pods-SwindExamples.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		948891E6240D76C6000FBE60 = {
 			isa = PBXGroup;
 			children = (
 				948891F2240D76C6000FBE60 /* Swind */,
 				94889200240D7716000FBE60 /* SwindExamples */,
 				948891F1240D76C6000FBE60 /* Products */,
+				55FF046996CC6E09325B9178 /* Pods */,
+				96B9CF82B3FDFFB50E3DE003 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,6 +85,8 @@
 		948891F2240D76C6000FBE60 /* Swind */ = {
 			isa = PBXGroup;
 			children = (
+				94889215240D7FDE000FBE60 /* Reactive */,
+				94889214240D7FDA000FBE60 /* Core */,
 				948891F3240D76C6000FBE60 /* Swind.h */,
 				948891F4240D76C6000FBE60 /* Info.plist */,
 			);
@@ -87,6 +105,28 @@
 				9488920F240D771A000FBE60 /* Info.plist */,
 			);
 			path = SwindExamples;
+			sourceTree = "<group>";
+		};
+		94889214240D7FDA000FBE60 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		94889215240D7FDE000FBE60 /* Reactive */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Reactive;
+			sourceTree = "<group>";
+		};
+		96B9CF82B3FDFFB50E3DE003 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				23D7376C417358F81E04598F /* Pods_SwindExamples.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,9 +165,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 94889210240D771A000FBE60 /* Build configuration list for PBXNativeTarget "SwindExamples" */;
 			buildPhases = (
+				943EF6E64C1C9FAA41ABB2CE /* [CP] Check Pods Manifest.lock */,
 				948891FB240D7715000FBE60 /* Sources */,
 				948891FC240D7715000FBE60 /* Frameworks */,
 				948891FD240D7715000FBE60 /* Resources */,
+				4E887B57DF534FFC9BFC016F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -194,6 +236,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4E887B57DF534FFC9BFC016F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwindExamples/Pods-SwindExamples-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwindExamples/Pods-SwindExamples-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwindExamples/Pods-SwindExamples-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		943EF6E64C1C9FAA41ABB2CE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwindExamples-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		948891EC240D76C6000FBE60 /* Sources */ = {
@@ -403,6 +487,7 @@
 		};
 		94889211240D771A000FBE60 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3956EDB494989977C66E303A /* Pods-SwindExamples.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -420,6 +505,7 @@
 		};
 		94889212240D771A000FBE60 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A4CDDF1BFB6F32BF2580DF7 /* Pods-SwindExamples.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -91,3 +91,6 @@ iOSInjectionProject/
 
 # OSX
 *.DS_STORE
+
+# Pods
+Pods/
