@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'Swind_Example' do
+  pod 'Swind', :path => '../'
+
+  target 'Swind_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
