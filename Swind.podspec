@@ -1,46 +1,66 @@
 #
-#  Be sure to run `pod spec lint Swind.podspec' to ensure this is a
-#  valid spec and to remove all comments including this before submitting the spec.
+# Be sure to run `pod lib lint Swind.podspec' to ensure this is a
+# valid spec before submitting.
 #
-#  To learn more about Podspec attributes see https://guides.cocoapods.org/syntax/podspec.html
-#  To see working Podspecs in the CocoaPods repo see https://github.com/CocoaPods/Specs/
+# Any lines starting with a # are optional, but their use is encouraged
+# To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
 #
 
-Pod::Spec.new do |spec|
-  spec.name         = "Swind"
-  spec.version      = "0.1.0"
-  spec.summary      = "Databinding for Swift iOS projects, made simple"
-  
-  spec.description  = <<-DESC
+Pod::Spec.new do |s|
+  s.name             = 'Swind'
+  s.version          = '0.1.0'
+  s.summary          = 'Databinding for Swift iOS projects, made simple.'
+
+# This description is used to generate tags and improve search results.
+#   * Think: What does it do? Why did you write it? What is the focus?
+#   * Try to keep it short, snappy and to the point.
+#   * Write the description between the DESC delimiters below.
+#   * Finally, don't worry about the indent, CocoaPods strips it!
+
+  s.description      = <<-DESC
   Swind aims to provide a simple, yet effective databinding solution for iOS
   projects. Take your MVVM development to the next level with Swind!
-                   DESC
+                       DESC
 
-  spec.homepage     = "https://github.com/blastervla/Swind.git"
+  s.homepage         = 'https://github.com/blastervla/Swind.git'
+  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  s.author           = { 'Vladimir Pomsztein' => 'blastervla@gmail.com' }
+  s.source           = { :git => 'https://github.com/blastervla/Swind.git', :tag => s.version.to_s }
+  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  spec.license      = { :type => "Creative Commons Attribution 4.0", :file => "LICENSE" }
+  s.license      = { :type => "Creative Commons Attribution 4.0", :file => "LICENSE" }
 
-  spec.author             = { "Vladimir Pomsztein" => "blastervla@gmail.com" }
-  # spec.social_media_url   = "https://twitter.com/Vladimir Pomsztein"
-
-  spec.platform     = :ios
-
-  spec.source       = { :git => "https://github.com/blastervla/Swind.git", :tag => "#{spec.version}" }
-
-  spec.source_files  = "Classes", "Classes/**/*.{h,m}"
-  spec.exclude_files = "Classes/Exclude"
-
-  spec.subspec 'Core' do |ss|
+  s.ios.deployment_target = '10.0'
+  s.requires_arc = true
+  s.static_framework = true
+  s.swift_version = '5.0'
+  
+  s.subspec 'Core' do |ss|
     ss.source_files = "Swind/Core/Classes/**/*.{h,m,swift}"
-    ss.resources    = "Swind/Core/Classes/**/*.xib", "Swind/Core/Assets/**/*.xcassets"
+    # ss.resources    = "Swind/Core/Classes/**/*.xib", "Swind/Core/Assets/**/*.xcassets"
   end
 
-  spec.subspec 'Reactive' do |ss|
+  s.subspec 'Reactive' do |ss|
     ss.source_files = "Swind/Reactive/Classes/**/*.{h,m,swift}"
-    ss.resources    = "Swind/Reactive/Classes/**/*.xib", "Swind/Core/Assets/**/*.xcassets"
+    # ss.resources    = "Swind/Reactive/Classes/**/*.xib", "Swind/Reactive/Assets/**/*.xcassets"
 
     ss.dependency 'RxSwift', '~> 5'
     ss.dependency 'RxCocoa', '~> 5'
+  end
+
+  s.subspec 'Checkbox' do |ss|
+    ss.source_files = "Swind/Checkbox/Classes/**/*.{h,m,swift}"
+    # ss.resources    = "Swind/Checkbox/Classes/**/*.xib", "Swind/Checkbox/Assets/**/*.xcassets"
+
+    ss.dependency 'M13Checkbox'
+  end
+
+  s.subspec 'Material' do |ss|
+    ss.source_files = "Swind/Material/Classes/**/*.{h,m,swift}"
+    # ss.resources    = "Swind/Material/Classes/**/*.xib", "Swind/Material/Assets/**/*.xcassets"
+
+    ss.dependency 'MaterialComponents'
   end
 
 end
