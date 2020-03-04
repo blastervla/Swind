@@ -1,13 +1,14 @@
 //
-//  BindeableSlider.swift
+//  BindeableMDCSlider.swift
 //  Swind
 //
-//  Created by Vladimir Pomsztein on 3/3/20.
+//  Created by Vladimir Pomsztein on 3/4/20.
 //
 
 import UIKit
+import MaterialComponents
 
-class BindeableSlider: UISlider {
+class BindeableMDCSlider: MDCSlider {
 
     /// Handler to be called when value changes, receiving the new `value`
     var onValueChanged: ((Float) -> Void)? = nil
@@ -30,8 +31,8 @@ class BindeableSlider: UISlider {
     }
     
     @objc func sliderValueChanged(slider: UISlider) {
-        self.onValueChanged?(self.value)
-        self.bindee?.perform(self.bindeeSelector, with: NSNumber(value: self.value))
+        self.onValueChanged?(Float(self.value))
+        self.bindee?.perform(self.bindeeSelector, with: NSNumber(value: Float(self.value)))
     }
 
 }
