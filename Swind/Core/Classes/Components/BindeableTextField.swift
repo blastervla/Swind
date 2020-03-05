@@ -8,11 +8,11 @@
 
 import UIKit
 
-class BindeableTextField: UITextField {
+public class BindeableTextField: UITextField {
 
-    var onTextChange: (() -> Void)? = nil
-    var bindeeSelector: Selector?
-    var bindee: NSObject?
+    public var onTextChange: (() -> Void)? = nil
+    public var bindeeSelector: Selector?
+    public var bindee: NSObject?
 
     override init(frame: CGRect) {
         super.init(frame: frame)

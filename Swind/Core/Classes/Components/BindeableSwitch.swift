@@ -7,9 +7,9 @@
 
 import UIKit
 
-class BindeableSwitch: UISwitch {
+public class BindeableSwitch: UISwitch {
 
-    var onChange: ((Bool) -> Void)? = nil
+    public var onChange: ((Bool) -> Void)? = nil
     var bindeeSelector: Selector?
     var bindee: NSObject?
     

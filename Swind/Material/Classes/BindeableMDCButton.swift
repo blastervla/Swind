@@ -8,9 +8,9 @@
 import UIKit
 import MaterialComponents
 
-class BindeableMDCButton: MDCButton {
+public class BindeableMDCButton: MDCButton {
     
-    var onTap: (() -> Void)? = nil
+    public var onTap: (() -> Void)? = nil
     var bindeeSelector: Selector?
     var bindee: NSObject?
     

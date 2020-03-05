@@ -6,6 +6,6 @@
 //  Copyright © 2020 Vladimir Pomsztein. All rights reserved.
 //
 
-protocol BaseBinderProtocol {
+public protocol BaseBinderProtocol {
     static func bind(parent: Any, view: Any, viewModel: BaseVM)
 }

@@ -8,9 +8,9 @@
 import UIKit
 import MaterialComponents
 
-class BindeableMDCMultilineTextField: MDCMultilineTextField, UITextViewDelegate {
+public class BindeableMDCMultilineTextField: MDCMultilineTextField, UITextViewDelegate {
 
-    var onTextChange: ((String) -> Void)? = nil
+    public var onTextChange: ((String) -> Void)? = nil
     var bindeeSelector: Selector?
     var bindee: NSObject?
     
@@ -29,7 +29,7 @@ class BindeableMDCMultilineTextField: MDCMultilineTextField, UITextViewDelegate 
         self.bindeeSelector = bindeeSelector
     }
     
-    @objc func textViewDidChange(_ textView: UITextView) {
+    @objc public func textViewDidChange(_ textView: UITextView) {
         self.onTextChange?(self.text ?? "")
         self.bindee?.perform(self.bindeeSelector, with: self.text ?? "")
     }

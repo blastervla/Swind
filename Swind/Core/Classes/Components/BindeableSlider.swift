@@ -7,20 +7,23 @@
 
 import UIKit
 
-class BindeableSlider: UISlider {
+public class BindeableSlider: UISlider {
 
     /// Handler to be called when value changes, receiving the new `value`
-    var onValueChanged: ((Float) -> Void)? = nil
+    public var onValueChanged: ((Float) -> Void)? = nil
     var bindeeSelector: Selector?
     var bindee: NSObject?
+    var lastValue: Float = 0
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.lastValue = self.value
         self.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.lastValue = self.value
         self.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
     }
     
@@ -30,6 +33,9 @@ class BindeableSlider: UISlider {
     }
     
     @objc func sliderValueChanged(slider: UISlider) {
+        if self.value != self.lastValue {
+            self.lastValue = self.value
+        }
         self.onValueChanged?(self.value)
         self.bindee?.perform(self.bindeeSelector, with: NSNumber(value: self.value))
     }

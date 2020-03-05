@@ -6,7 +6,7 @@
 //  Copyright © 2020 Vladimir Pomsztein. All rights reserved.
 //
 
-class BaseVM: NSObject {
+open class BaseVM: NSObject {
 
     public var onChange: (() -> Void)?
     
@@ -14,7 +14,7 @@ class BaseVM: NSObject {
         return self == model.self
     }
     
-    func notifyChange() {
+    public func notifyChange() {
         self.onChange?()
     }
 

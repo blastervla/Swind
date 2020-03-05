@@ -9,13 +9,13 @@
 import UIKit
 import M13Checkbox
 
-class BindeableCheckbox: M13Checkbox {
+public class BindeableCheckbox: M13Checkbox {
 
-    var onChange: ((Bool) -> Void)? = nil
+    public var onChange: ((Bool) -> Void)? = nil
     var bindeeSelector: Selector?
     var bindee: NSObject?
     
-    var isChecked: Bool {
+    public var isChecked: Bool {
         return self.checkState == .checked
     }
     

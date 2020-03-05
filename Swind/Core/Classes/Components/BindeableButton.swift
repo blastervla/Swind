@@ -8,9 +8,9 @@
 
 import UIKit
 
-class BindeableButton: UIButton {
+public class BindeableButton: UIButton {
 
-    var onTap: (() -> Void)? = nil
+    public var onTap: (() -> Void)? = nil
     var bindeeSelector: Selector?
     var bindee: NSObject?
     

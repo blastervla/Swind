@@ -24,7 +24,6 @@ Pod::Spec.new do |s|
 
   s.homepage         = 'https://github.com/blastervla/Swind.git'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Vladimir Pomsztein' => 'blastervla@gmail.com' }
   s.source           = { :git => 'https://github.com/blastervla/Swind.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
@@ -45,6 +44,7 @@ Pod::Spec.new do |s|
     ss.source_files = "Swind/Reactive/Classes/**/*.{h,m,swift}"
     # ss.resources    = "Swind/Reactive/Classes/**/*.xib", "Swind/Reactive/Assets/**/*.xcassets"
 
+    ss.dependency 'Swind/Core'
     ss.dependency 'RxSwift', '~> 5'
     ss.dependency 'RxCocoa', '~> 5'
   end
@@ -53,6 +53,7 @@ Pod::Spec.new do |s|
     ss.source_files = "Swind/Checkbox/Classes/**/*.{h,m,swift}"
     # ss.resources    = "Swind/Checkbox/Classes/**/*.xib", "Swind/Checkbox/Assets/**/*.xcassets"
 
+    ss.dependency 'Swind/Core'
     ss.dependency 'M13Checkbox'
   end
 
@@ -60,6 +61,7 @@ Pod::Spec.new do |s|
     ss.source_files = "Swind/Material/Classes/**/*.{h,m,swift}"
     # ss.resources    = "Swind/Material/Classes/**/*.xib", "Swind/Material/Assets/**/*.xcassets"
 
+    ss.dependency 'Swind/Core'
     ss.dependency 'MaterialComponents'
   end
 

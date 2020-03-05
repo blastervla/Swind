@@ -7,11 +7,11 @@
 
 import UIKit
 
-class BindeableTextView: UITextView, UITextViewDelegate {
+public class BindeableTextView: UITextView, UITextViewDelegate {
 
-    var onTextChange: ((String) -> Void)? = nil
-    var bindeeSelector: Selector?
-    var bindee: NSObject?
+    public var onTextChange: ((String) -> Void)? = nil
+    public var bindeeSelector: Selector?
+    public var bindee: NSObject?
 
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
@@ -28,7 +28,7 @@ class BindeableTextView: UITextView, UITextViewDelegate {
         self.bindeeSelector = bindeeSelector
     }
     
-    func textViewDidChange(_ textView: UITextView) {
+    public func textViewDidChange(_ textView: UITextView) {
         self.onTextChange?(textView.text)
         self.bindee?.perform(self.bindeeSelector, with: textView.text ?? "")
     }

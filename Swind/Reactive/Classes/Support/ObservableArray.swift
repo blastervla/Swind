@@ -26,45 +26,47 @@ public struct ArrayChangeEvent {
 public struct ObservableArray<Element>: ExpressibleByArrayLiteral {
     public typealias EventType = ArrayChangeEvent
     
-    internal var eventSubject: PublishSubject<EventType>!
-    internal var elementsSubject: BehaviorSubject<[Element]>!
-    internal var elements: [Element]
+    internal var eventSubject: PublishSubject<EventType>
+    internal var elementsSubject: BehaviorSubject<[Element]>
+    public var elements: [Element]
     
     public init() {
         elements = []
+        elementsSubject = BehaviorSubject<[Element]>(value: elements)
+        eventSubject = PublishSubject<EventType>()
     }
     
     public init(count: Int, repeatedValue: Element) {
         elements = Array(repeating: repeatedValue, count: count)
+        elementsSubject = BehaviorSubject<[Element]>(value: elements)
+        eventSubject = PublishSubject<EventType>()
     }
     
     public init<S : Sequence>(_ s: S) where S.Iterator.Element == Element {
         elements = Array(s)
+        elementsSubject = BehaviorSubject<[Element]>(value: elements)
+        eventSubject = PublishSubject<EventType>()
     }
     
     public init(arrayLiteral elements: Element...) {
         self.elements = elements
+        elementsSubject = BehaviorSubject<[Element]>(value: elements)
+        eventSubject = PublishSubject<EventType>()
     }
 }
 
-extension ObservableArray {
-    public mutating func rx_elements() -> Observable<[Element]> {
-        if elementsSubject == nil {
-            elementsSubject = BehaviorSubject<[Element]>(value: elements)
-        }
-        return elementsSubject
+public extension ObservableArray {
+    mutating func rx_elements() -> Observable<[Element]> {
+        return self.elementsSubject
     }
     
-    public mutating func rx_events() -> Observable<EventType> {
-        if eventSubject == nil {
-            eventSubject = PublishSubject<EventType>()
-        }
+    mutating func rx_events() -> Observable<EventType> {
         return eventSubject
     }
     
     fileprivate func arrayDidChange(_ event: EventType) {
-        elementsSubject?.onNext(elements)
-        eventSubject?.onNext(event)
+        self.elementsSubject.onNext(elements)
+        eventSubject.onNext(event)
     }
 }
 
@@ -126,7 +128,8 @@ extension ObservableArray: MutableCollection {
         arrayDidChange(ArrayChangeEvent(inserted: Array(end..<elements.count)))
     }
     
-    @discardableResult public mutating func removeLast() -> Element {
+    @discardableResult public mutating func removeLast() -> Element? {
+        guard !elements.isEmpty else { return nil }
         let e = elements.removeLast()
         arrayDidChange(ArrayChangeEvent(deleted: [elements.count]))
         return e
@@ -221,14 +224,14 @@ extension ObservableArray: Sequence {
         }
     }
     
-    func last(where condition: (Element) throws -> Bool) rethrows -> Element? {
+    public func swind_last(where condition: (Element) throws -> Bool) rethrows -> Element? {
         for element in reversed() {
             if try condition(element) { return element }
         }
         return nil
     }
     
-    public func last() -> Element? {
-        return self.last { _ in true }
+    public func swind_last() -> Element? {
+        return self.swind_last { _ in true }
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BindeableStackView: UIStackView {
+public class BindeableStackView: UIStackView {
 
     var nibName: String = ""
     var bundle: Bundle?

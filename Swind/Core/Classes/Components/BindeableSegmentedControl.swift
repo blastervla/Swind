@@ -8,9 +8,9 @@
 
 import UIKit
 
-class BindeableSegmentedControl: UISegmentedControl {
+public class BindeableSegmentedControl: UISegmentedControl {
 
-    var onSegmentChanged: ((Int) -> Void)? = nil
+    public var onSegmentChanged: ((Int) -> Void)? = nil
     var bindeeSelector: Selector?
     var bindee: NSObject?
     

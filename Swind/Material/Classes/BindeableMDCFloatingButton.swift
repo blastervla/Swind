@@ -8,9 +8,9 @@
 import UIKit
 import MaterialComponents
 
-class BindeableMDCFloatingButton: MDCFloatingButton {
+public class BindeableMDCFloatingButton: MDCFloatingButton {
 
-    var onTap: (() -> Void)? = nil
+    public var onTap: (() -> Void)? = nil
     var bindeeSelector: Selector?
     var bindee: NSObject?
     

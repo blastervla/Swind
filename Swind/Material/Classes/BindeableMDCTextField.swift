@@ -9,9 +9,9 @@
 import UIKit
 import MaterialComponents
 
-class BindeableMDCTextField: MDCTextField {
+public class BindeableMDCTextField: MDCTextField {
 
-    var onTextChange: ((String) -> Void)? = nil
+    public var onTextChange: ((String) -> Void)? = nil
     var bindeeSelector: Selector?
     var bindee: NSObject?
 
@@ -30,7 +30,7 @@ class BindeableMDCTextField: MDCTextField {
         self.bindeeSelector = bindeeSelector
     }
     
-    @objc func textFieldDidChange(textField: UITextField) {
+    @objc public func textFieldDidChange(textField: UITextField) {
         self.onTextChange?(self.text ?? "")
         self.bindee?.perform(self.bindeeSelector, with: self.text ?? "")
     }

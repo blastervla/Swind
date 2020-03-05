@@ -8,10 +8,10 @@
 import UIKit
 import MaterialComponents
 
-class BindeableMDCSlider: MDCSlider {
+public class BindeableMDCSlider: MDCSlider {
 
     /// Handler to be called when value changes, receiving the new `value`
-    var onValueChanged: ((Float) -> Void)? = nil
+    public var onValueChanged: ((Float) -> Void)? = nil
     var bindeeSelector: Selector?
     var bindee: NSObject?
 

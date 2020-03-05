@@ -7,11 +7,11 @@
 
 import UIKit
 
-class BindeableStepper: UIStepper {
+public class BindeableStepper: UIStepper {
 
-    var onIncrease: ((Double) -> Void)? = nil
-    var onDecrease: ((Double) -> Void)? = nil
-    var onChange: ((Double) -> Void)? = nil
+    public var onIncrease: ((Double) -> Void)? = nil
+    public var onDecrease: ((Double) -> Void)? = nil
+    public var onChange: ((Double) -> Void)? = nil
     var bindeeSelector: Selector?
     var bindee: NSObject?
     
@@ -20,13 +20,13 @@ class BindeableStepper: UIStepper {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.previousValue = self.value
-        self.addTarget(self, action: #selector(didTap), for: .touchUpInside)
+        self.addTarget(self, action: #selector(stepperValueChanged), for: .valueChanged)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.previousValue = self.value
-        self.addTarget(self, action: #selector(didTap), for: .touchUpInside)
+        self.addTarget(self, action: #selector(stepperValueChanged), for: .valueChanged)
     }
     
     public func bind(_ bindee: NSObject, _ bindeeSelector: Selector) {
@@ -34,7 +34,7 @@ class BindeableStepper: UIStepper {
         self.bindeeSelector = bindeeSelector
     }
     
-    @objc func didTap(sender: UIButton) {
+    @objc func stepperValueChanged(sender: UIStepper) {
         let didIncrease = self.previousValue < self.value
         self.previousValue = self.value
         
