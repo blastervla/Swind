@@ -224,14 +224,14 @@ extension ObservableArray: Sequence {
         }
     }
     
-    public func swind_last(where condition: (Element) throws -> Bool) rethrows -> Element? {
+    public func last(where condition: (Element) throws -> Bool) rethrows -> Element? {
         for element in reversed() {
             if try condition(element) { return element }
         }
         return nil
     }
     
-    public func swind_last() -> Element? {
-        return self.swind_last { _ in true }
+    public func last() -> Element? {
+        return self.last { _ in true }
     }
 }
