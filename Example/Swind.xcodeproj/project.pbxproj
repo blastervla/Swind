@@ -17,6 +17,8 @@
 		940C0C5F24112DF50056250B /* SpecialAbilityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C0C5E24112DF50056250B /* SpecialAbilityModel.swift */; };
 		940C0C6224113AB50056250B /* RobotBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C0C6124113AB50056250B /* RobotBinder.swift */; };
 		940C0C6424113CCD0056250B /* SpecialAbilityBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C0C6324113CCD0056250B /* SpecialAbilityBinder.swift */; };
+		940C0C6A2413EE370056250B /* ShowRobotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C0C692413EE370056250B /* ShowRobotController.swift */; };
+		940C0C6C2413EE790056250B /* ShowRobotBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C0C6B2413EE790056250B /* ShowRobotBinder.swift */; };
 		9488925424101781000FBE60 /* RobotSpecialAbilityLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9488925224101781000FBE60 /* RobotSpecialAbilityLayout.swift */; };
 		9488925524101781000FBE60 /* RobotSpecialAbilityLayout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9488925324101781000FBE60 /* RobotSpecialAbilityLayout.xib */; };
 /* End PBXBuildFile section */
@@ -38,6 +40,8 @@
 		940C0C5E24112DF50056250B /* SpecialAbilityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialAbilityModel.swift; sourceTree = "<group>"; };
 		940C0C6124113AB50056250B /* RobotBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotBinder.swift; sourceTree = "<group>"; };
 		940C0C6324113CCD0056250B /* SpecialAbilityBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialAbilityBinder.swift; sourceTree = "<group>"; };
+		940C0C692413EE370056250B /* ShowRobotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRobotController.swift; sourceTree = "<group>"; };
+		940C0C6B2413EE790056250B /* ShowRobotBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRobotBinder.swift; sourceTree = "<group>"; };
 		9488925224101781000FBE60 /* RobotSpecialAbilityLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotSpecialAbilityLayout.swift; sourceTree = "<group>"; };
 		9488925324101781000FBE60 /* RobotSpecialAbilityLayout.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RobotSpecialAbilityLayout.xib; sourceTree = "<group>"; };
 		ACEFB44AD64C1B244C5F8918 /* Pods_Swind_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swind_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,11 +100,11 @@
 		607FACD21AFB9204008FA782 /* Example for Swind */ = {
 			isa = PBXGroup;
 			children = (
+				940C0C682413EE230056250B /* ViewControllers */,
 				940C0C6024113A9F0056250B /* Binders */,
 				940C0C5B24112B340056250B /* ViewModels */,
 				9488925124101743000FBE60 /* Views */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -158,8 +162,18 @@
 			children = (
 				940C0C6124113AB50056250B /* RobotBinder.swift */,
 				940C0C6324113CCD0056250B /* SpecialAbilityBinder.swift */,
+				940C0C6B2413EE790056250B /* ShowRobotBinder.swift */,
 			);
 			path = Binders;
+			sourceTree = "<group>";
+		};
+		940C0C682413EE230056250B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				940C0C692413EE370056250B /* ShowRobotController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		9488925124101743000FBE60 /* Views */ = {
@@ -309,10 +323,12 @@
 				9488925424101781000FBE60 /* RobotSpecialAbilityLayout.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				940C0C6224113AB50056250B /* RobotBinder.swift in Sources */,
+				940C0C6C2413EE790056250B /* ShowRobotBinder.swift in Sources */,
 				940C0C5D24112B4D0056250B /* RobotModel.swift in Sources */,
 				940C0C6424113CCD0056250B /* SpecialAbilityBinder.swift in Sources */,
 				940C0C5F24112DF50056250B /* SpecialAbilityModel.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				940C0C6A2413EE370056250B /* ShowRobotController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

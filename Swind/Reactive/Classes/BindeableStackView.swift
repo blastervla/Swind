@@ -14,7 +14,7 @@ public class BindeableStackView: UIStackView {
     var bundle: Bundle?
     var binder: BaseBinderProtocol.Type?
     
-    public func bind<T: BaseVM>(_ entries: ObservableArray<T>, parent: Any, layoutNibName nibName: String, bundle: Bundle, binder: BaseBinderProtocol.Type) {
+    public func bind<T: BaseViewModel>(_ entries: ObservableArray<T>, parent: Any, layoutNibName nibName: String, bundle: Bundle, binder: BaseBinderProtocol.Type) {
         self.nibName = nibName
         self.bundle = bundle
         self.binder = binder
@@ -27,7 +27,7 @@ public class BindeableStackView: UIStackView {
         self.updateView(entries.elements, parent: parent)
     }
     
-    private func updateView<T: BaseVM>(_ elements: [T], parent: Any) {
+    private func updateView<T: BaseViewModel>(_ elements: [T], parent: Any) {
         self.swind_removeAllArrangedSubviews()
         
         elements.forEach { viewModel in

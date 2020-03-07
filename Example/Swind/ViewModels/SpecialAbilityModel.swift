@@ -9,7 +9,7 @@
 import UIKit
 import Swind
 
-class SpecialAbilityModel: BaseVM {
+class SpecialAbilityModel: BaseViewModel {
     var specialAbilityText: String = ""
     var type: SpecialAbilityType = .active
     
@@ -30,6 +30,13 @@ class SpecialAbilityModel: BaseVM {
                 return .active
             } else {
                 return .passive
+            }
+        }
+        
+        func toString() -> String {
+            switch self {
+            case .active: return "ACTIVE"
+            case .passive: return "PASSIVE"
             }
         }
     }

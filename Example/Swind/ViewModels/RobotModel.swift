@@ -9,7 +9,7 @@
 import UIKit
 import Swind
 
-class RobotModel: BaseVM {
+class RobotModel: BaseViewModel {
     var name: String = ""
     var gender: String = ""
     var wantsToBeARealKid: Bool = false
@@ -19,9 +19,7 @@ class RobotModel: BaseVM {
     var specialAbilities: [SpecialAbilityModel] = []
     var personality: String = ""
     
-    var nameErrorText: String {
-        return name.isEmpty ? "Brrr... Brrr... Please setup a name for your robot..." : ""
-    }
+    var nameErrorText: String = ""
     
     var strengthText: String {
         return String(Int(strength))
@@ -37,8 +35,15 @@ class RobotModel: BaseVM {
     
     var observableSpecialAbilities: ObservableArray<SpecialAbilityModel> = []
     
+    override init() {
+        self.gender = genderValues[0][0]
+    }
+    
     @objc func setName(_ name: String) {
         self.name = name
+        if !name.isEmpty {
+            self.nameErrorText = ""
+        }
         self.notifyChange()
     }
     
@@ -54,6 +59,25 @@ class RobotModel: BaseVM {
     @objc func setStrength(_ newStrength: NSNumber) {
         // Balance out points
         let diff = newStrength.floatValue - strength
+//        while diff > 0 {
+//            var pointsTaken: Float = 0
+//            if self.power > 0 {
+//                self.power -= 1
+//                pointsTaken += 1
+//            }
+//            if self.ai > 0 {
+//                self.ai -= 1
+//                pointsTaken += 1
+//            }
+//            if self.power > 2 - pointsTaken {
+//                self.power -= 2 - pointsTaken
+//            } else if self.ai > 2 - pointsTaken {
+//                self.ai -= 2 - pointsTaken
+//            } else {
+//                self.strength -= 2 - pointsTaken
+//            }
+//            diff -= 2
+//        }
         self.power -= diff / 2
         self.ai -= diff / 2
         
@@ -112,8 +136,39 @@ class RobotModel: BaseVM {
         self.notifyChange()
     }
     
+    func validate() -> Bool {
+        self.nameErrorText = self.name.isEmpty ? "Brrr... Brrr... Please setup a name for your robot..." : ""
+        notifyChange()
+        
+        return !self.name.isEmpty
+    }
+    
     func update() -> RobotModel {
         self.specialAbilities = self.observableSpecialAbilities.elements.filter { !$0.specialAbilityText.isEmpty }
         return self
+    }
+    
+    func toString() -> String {
+        return """
+        Buzz... buzz...
+        
+        My name is \(name).
+        I'm a \(gender) that \(self.wantsToBeARealKid ? "wants" : "doesn't want") to be a real kid.
+        
+        My stats are:
+        Strength: \(Int(strength))
+        Power: \(Int(power))
+        AI: \(Int(ai))
+        
+        So... FEAR ME!
+        
+        Also, I have the following special abilities:
+        \(specialAbilities.map { "- \($0.type.toString()): \($0.specialAbilityText)" }.joined(separator: "\n"))
+        
+        As for my personality...
+        \(personality)
+        
+        Douzo yoroshiku!
+        """
     }
 }

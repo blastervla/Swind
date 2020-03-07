@@ -120,8 +120,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" text="asdfasdf" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nY7-y3-Z9N" customClass="BindeableTextView" customModule="Swind">
-                                                <rect key="frame" x="32" y="560.5" width="311" height="1319.5"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nY7-y3-Z9N" customClass="BindeableTextView" customModule="Swind">
+                                                <rect key="frame" x="32" y="560.5" width="311" height="1281.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="249" constant="50" id="l5h-8O-84c"/>
@@ -138,6 +138,13 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJG-BB-bU4" customClass="BindeableButton" customModule="Swind">
+                                                <rect key="frame" x="32" y="1850" width="311" height="30"/>
+                                                <state key="normal" title="Create"/>
+                                                <connections>
+                                                    <segue destination="riT-HY-ea6" kind="show" identifier="ShowRobotSegue" id="yFx-fz-9zY"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sxx-mn-Ivk">
                                                 <rect key="frame" x="32" y="532.5" width="311" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -154,9 +161,10 @@
                                             <constraint firstItem="NOE-em-NMU" firstAttribute="centerY" secondItem="GgT-ky-qPF" secondAttribute="centerY" id="4Kv-cc-Meh"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="t6v-Ge-LZz" secondAttribute="trailing" constant="32" id="5hW-hj-z2G"/>
                                             <constraint firstItem="Ebe-q0-JWk" firstAttribute="centerY" secondItem="Hxg-4W-7oP" secondAttribute="centerY" id="6YQ-nr-sCx"/>
+                                            <constraint firstAttribute="bottom" secondItem="FJG-BB-bU4" secondAttribute="bottom" constant="20" symbolic="YES" id="77n-8U-Jjq"/>
                                             <constraint firstItem="TtG-6J-PSz" firstAttribute="leading" secondItem="Ebe-q0-JWk" secondAttribute="trailing" constant="4" id="8v6-kq-9Zt"/>
                                             <constraint firstItem="sY4-W4-6R5" firstAttribute="top" secondItem="tZy-NP-1PR" secondAttribute="bottom" constant="16" id="94D-uz-OLY"/>
-                                            <constraint firstAttribute="bottom" secondItem="nY7-y3-Z9N" secondAttribute="bottom" constant="20" symbolic="YES" id="9KW-Qu-bIX"/>
+                                            <constraint firstItem="FJG-BB-bU4" firstAttribute="top" secondItem="nY7-y3-Z9N" secondAttribute="bottom" constant="8" id="9KW-Qu-bIX"/>
                                             <constraint firstAttribute="trailing" secondItem="eMg-xS-XcZ" secondAttribute="trailing" constant="32" id="AG0-HH-M7d"/>
                                             <constraint firstItem="nY7-y3-Z9N" firstAttribute="leading" secondItem="laZ-ff-KtX" secondAttribute="leading" constant="32" id="AUQ-r0-Fdh"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OLp-vu-eP0" secondAttribute="trailing" constant="32" id="AVL-MF-Q2w"/>
@@ -164,6 +172,7 @@
                                             <constraint firstItem="eMg-xS-XcZ" firstAttribute="leading" secondItem="tZy-NP-1PR" secondAttribute="trailing" constant="4" id="DmF-yu-7hR"/>
                                             <constraint firstAttribute="trailing" secondItem="nY7-y3-Z9N" secondAttribute="trailing" constant="32" id="F3M-DM-Nar"/>
                                             <constraint firstAttribute="trailing" secondItem="P29-US-yYS" secondAttribute="trailing" constant="32" id="FhQ-Kv-h2f"/>
+                                            <constraint firstAttribute="trailing" secondItem="FJG-BB-bU4" secondAttribute="trailing" constant="32" id="FzJ-kM-tOM"/>
                                             <constraint firstItem="NOE-em-NMU" firstAttribute="leading" secondItem="GgT-ky-qPF" secondAttribute="trailing" constant="32" id="GTC-M1-oYp"/>
                                             <constraint firstItem="P29-US-yYS" firstAttribute="leading" secondItem="NOE-em-NMU" secondAttribute="trailing" constant="4" id="KXa-gS-Sih"/>
                                             <constraint firstItem="A9g-QJ-fFT" firstAttribute="leading" secondItem="laZ-ff-KtX" secondAttribute="leading" constant="32" id="MSy-0r-KBL"/>
@@ -175,6 +184,7 @@
                                             <constraint firstItem="L6L-Q8-mXd" firstAttribute="top" secondItem="OLp-vu-eP0" secondAttribute="bottom" constant="8" id="SAQ-83-8d9"/>
                                             <constraint firstItem="2zz-zg-DZ2" firstAttribute="top" secondItem="sY4-W4-6R5" secondAttribute="bottom" constant="8" id="TAX-FG-GxB"/>
                                             <constraint firstItem="7U4-pf-sGT" firstAttribute="leading" secondItem="laZ-ff-KtX" secondAttribute="leading" constant="32" id="W9T-lY-Bv1"/>
+                                            <constraint firstItem="FJG-BB-bU4" firstAttribute="leading" secondItem="laZ-ff-KtX" secondAttribute="leading" constant="32" id="XbP-iu-RhM"/>
                                             <constraint firstItem="DnO-XZ-FmN" firstAttribute="top" secondItem="L6L-Q8-mXd" secondAttribute="bottom" constant="8" id="ZCg-Uh-L7i"/>
                                             <constraint firstAttribute="trailing" secondItem="sxx-mn-Ivk" secondAttribute="trailing" constant="32" id="aEz-kA-gm5"/>
                                             <constraint firstItem="GgT-ky-qPF" firstAttribute="leading" secondItem="laZ-ff-KtX" secondAttribute="leading" constant="32" id="aaA-gv-wka"/>
@@ -246,6 +256,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+        <!--Show Robot Controller-->
+        <scene sceneID="q4j-Pl-fDR">
+            <objects>
+                <viewController id="riT-HY-ea6" customClass="ShowRobotController" customModule="Swind_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mER-ya-qZG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIn-9n-MOr">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="1000" translatesAutoresizingMaskIntoConstraints="NO" id="364-KT-IfL" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxw-ed-Tma">
+                                                <rect key="frame" x="20" y="20" width="335" height="960"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="mxw-ed-Tma" secondAttribute="trailing" constant="20" symbolic="YES" id="CrN-sz-MGm"/>
+                                            <constraint firstItem="mxw-ed-Tma" firstAttribute="top" secondItem="364-KT-IfL" secondAttribute="top" constant="20" symbolic="YES" id="aCj-sZ-prD"/>
+                                            <constraint firstItem="mxw-ed-Tma" firstAttribute="leading" secondItem="364-KT-IfL" secondAttribute="leading" constant="20" symbolic="YES" id="sgF-2l-5Kf"/>
+                                            <constraint firstAttribute="bottom" secondItem="mxw-ed-Tma" secondAttribute="bottom" constant="20" symbolic="YES" id="yBX-NQ-MCm"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="364-KT-IfL" firstAttribute="leading" secondItem="K9q-Gt-M62" secondAttribute="leading" id="8QB-iS-oX3"/>
+                                    <constraint firstItem="364-KT-IfL" firstAttribute="width" secondItem="PzT-lm-GWz" secondAttribute="width" id="AO7-Mb-dbJ"/>
+                                    <constraint firstItem="364-KT-IfL" firstAttribute="trailing" secondItem="K9q-Gt-M62" secondAttribute="trailing" id="KFm-Y4-3tT"/>
+                                    <constraint firstItem="364-KT-IfL" firstAttribute="bottom" secondItem="K9q-Gt-M62" secondAttribute="bottom" id="L1X-gc-R37"/>
+                                    <constraint firstItem="364-KT-IfL" firstAttribute="top" secondItem="K9q-Gt-M62" secondAttribute="top" id="kut-VY-6pn"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="K9q-Gt-M62"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="PzT-lm-GWz"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="HgO-vX-oVr" firstAttribute="trailing" secondItem="fIn-9n-MOr" secondAttribute="trailing" id="C5g-bN-Aka"/>
+                            <constraint firstItem="HgO-vX-oVr" firstAttribute="bottom" secondItem="fIn-9n-MOr" secondAttribute="bottom" id="SEP-Os-BvM"/>
+                            <constraint firstItem="fIn-9n-MOr" firstAttribute="leading" secondItem="HgO-vX-oVr" secondAttribute="leading" id="feT-Wu-hrA"/>
+                            <constraint firstItem="fIn-9n-MOr" firstAttribute="top" secondItem="HgO-vX-oVr" secondAttribute="top" id="wEm-2a-K8h"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HgO-vX-oVr"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dGM-FK-XXl"/>
+                    <connections>
+                        <outlet property="label" destination="mxw-ed-Tma" id="p6l-XL-IYd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nz7-ed-Ycx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1048.8" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>

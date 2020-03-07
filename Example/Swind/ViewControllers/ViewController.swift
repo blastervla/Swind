@@ -9,7 +9,7 @@
 import UIKit
 import Swind
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, BaseViewProtocol {
 
     @IBOutlet weak var nameTextField: BindeableTextField!
     @IBOutlet weak var nameErrorLabel: UILabel!
@@ -60,6 +60,19 @@ class ViewController: UIViewController {
 
     @objc func endEdittingPicker() {
         view.endEditing(true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? ShowRobotController, segue.identifier == "ShowRobotSegue" {
+            destinationVC.setRobot(self.viewModel.update())
+        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "ShowRobotSegue" {
+            return viewModel.validate()
+        }
+        return true
     }
 }
 

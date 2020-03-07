@@ -7,5 +7,5 @@
 //
 
 public protocol BaseBinderProtocol {
-    static func bind(parent: Any, view: Any, viewModel: BaseVM)
+    static func bind(parent: Any, view: Any, viewModel: BaseViewModel)
 }
