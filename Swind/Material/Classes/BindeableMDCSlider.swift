@@ -12,6 +12,17 @@ public class BindeableMDCSlider: MDCSlider {
 
     /// Handler to be called when value changes, receiving the new `value`
     public var onValueChanged: ((Float) -> Void)? = nil
+    
+    /// Wrapper provided to use value as a Swift float instead of CGFloat. This maps to `value`
+    public var floatValue: Float {
+        get {
+            return Float(self.value)
+        }
+        set(value) {
+            self.value = CGFloat(value)
+        }
+    }
+    
     var bindeeSelector: Selector?
     var bindee: NSObject?
 
