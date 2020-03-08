@@ -37,7 +37,11 @@ class ViewController: UIViewController, BaseViewProtocol {
         super.viewDidLoad()
         
         configurePickerView()
-        RobotBinder.bind(parent: self, view: self, viewModel: viewModel)
+        getBinder().bind(parent: self, view: self, viewModel: viewModel)
+    }
+    
+    func getBinder() -> BaseBinderProtocol.Type {
+        return RobotBinder.self
     }
 
     func configurePickerView() {

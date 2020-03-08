@@ -28,7 +28,7 @@ public class BindeableStackView: UIStackView {
     /// - Parameter layoutNibName: Nib name that'll be used to represent each entry.
     /// - Parameter bundle: `Bundle` to be used to load the nib with its `layoutNibName`
     /// - Parameter binder: `Binder` type that will be used to bind each entry with its view
-    public func bind<T: BaseViewModel>(_ entries: ObservableArray<T>, parent: Any, layoutNibName nibName: String, bundle: Bundle, binder: BaseBinderProtocol.Type) {
+    public func bind<T: BaseViewModel>(_ entries: ObservableArray<T>, parent: BaseViewProtocol, layoutNibName nibName: String, bundle: Bundle, binder: BaseBinderProtocol.Type) {
         self.nibName = nibName
         self.bundle = bundle
         self.binder = binder
@@ -41,7 +41,7 @@ public class BindeableStackView: UIStackView {
         self.updateView(entries.elements, parent: parent)
     }
     
-    private func updateView<T: BaseViewModel>(_ elements: [T], parent: Any) {
+    private func updateView<T: BaseViewModel>(_ elements: [T], parent: BaseViewProtocol) {
         self.swind_removeAllArrangedSubviews()
         
         elements.forEach { viewModel in

@@ -10,7 +10,7 @@ import UIKit
 import Swind
 
 class RobotBinder: BaseBinderProtocol {
-    static func bind(parent: Any, view: Any, viewModel: BaseViewModel) {
+    static func bind(parent: BaseViewProtocol, view: Any, viewModel: BaseViewModel) {
         guard let view = view as? ViewController, let viewModel = viewModel as? RobotModel else { return }
         
         view.nameTextField.bind(viewModel, #selector(viewModel.setName))

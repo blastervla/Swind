@@ -10,7 +10,7 @@ import UIKit
 import Swind
 
 class SpecialAbilityBinder: BaseBinderProtocol {
-    static func bind(parent: Any, view: Any, viewModel: BaseViewModel) {
+    static func bind(parent: BaseViewProtocol, view: Any, viewModel: BaseViewModel) {
         guard let view = view as? RobotSpecialAbilityLayout, let viewModel = viewModel as? SpecialAbilityModel else { return }
         
         view.specialAbilityTextField.bind(viewModel, #selector(viewModel.setSpecialAbility))

@@ -10,7 +10,7 @@ import UIKit
 import Swind
 
 class ShowRobotBinder: BaseBinderProtocol {
-    static func bind(parent: Any, view: Any, viewModel: BaseViewModel) {
+    static func bind(parent: BaseViewProtocol, view: Any, viewModel: BaseViewModel) {
         guard let view = view as? ShowRobotController, let viewModel = viewModel as? RobotModel else { return }
         
         view.label.text = viewModel.toString()

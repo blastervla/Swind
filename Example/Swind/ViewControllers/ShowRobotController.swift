@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Swind
 
-class ShowRobotController: UIViewController {
+class ShowRobotController: UIViewController, BaseViewProtocol {
 
     @IBOutlet weak var label: UILabel!
     

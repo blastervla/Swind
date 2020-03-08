@@ -8,5 +8,5 @@
 
 public protocol BaseBinderProtocol {
     /// Method created for the sole purpose of executing all view bindings.
-    static func bind(parent: Any, view: Any, viewModel: BaseViewModel)
+    static func bind(parent: BaseViewProtocol, view: Any, viewModel: BaseViewModel)
 }
