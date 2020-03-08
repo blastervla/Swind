@@ -8,12 +8,19 @@
 
 open class BaseViewModel: NSObject {
 
+    /// Closure to be setup on the `bind` method of the model's
+    /// Binder. This will get called each time `notifyChange` is
+    /// called on the ViewModel.
     public var onChange: (() -> Void)?
     
     open func isSameAs(model: BaseViewModel) -> Bool {
         return self == model.self
     }
     
+    /// Method to be called whenever a UI change should be impacted.
+    /// Each call to this method will internally execute the `onChange`
+    /// closure, so plan updates accordingly (by batch if possible) so
+    /// as to avoid any performance penalties.
     public func notifyChange() {
         self.onChange?()
     }

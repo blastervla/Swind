@@ -56,10 +56,20 @@ public struct ObservableArray<Element>: ExpressibleByArrayLiteral {
 }
 
 public extension ObservableArray {
+    /// Provides a way of subscribing and manipulating rx results
+    ///
+    /// - Returns: An `Observable<[Element]>` containing all objects
+    ///            of the array, that will emit a new value each time
+    ///            an entry of the array changes.
     mutating func rx_elements() -> Observable<[Element]> {
         return self.elementsSubject
     }
     
+    /// Provides a way of subscribing and manipulating rx results
+    ///
+    /// - Returns: An `Observable<EventType>` containing the `EventType`
+    ///            of the last event, that will emit a new value each time
+    ///            an entry of the array changes.
     mutating func rx_events() -> Observable<EventType> {
         return eventSubject
     }
@@ -71,6 +81,7 @@ public extension ObservableArray {
 }
 
 extension ObservableArray: Collection {
+    /// Wrapper property for the internal array's `capacity`
     public var capacity: Int {
         return elements.capacity
     }
@@ -79,33 +90,47 @@ extension ObservableArray: Collection {
      return elements.count
      }*/
     
+    /// Wrapper property for the internal array's `startIndex`
     public var startIndex: Int {
         return elements.startIndex
     }
     
+    /// Wrapper property for the internal array's `endIndex`
     public var endIndex: Int {
         return elements.endIndex
     }
     
+    /// Wrapper property for the internal array's `index(after: Int)`
     public func index(after i: Int) -> Int {
         return elements.index(after: i)
     }
 }
 
 extension ObservableArray: MutableCollection {
+    /// Wrapper property for the internal array's
+    /// `reserveCapacity(_ minimumCapacity: Int)`
     public mutating func reserveCapacity(_ minimumCapacity: Int) {
         elements.reserveCapacity(minimumCapacity)
     }
     
+    /// Alias for the `append(_ newElement: )` function
     public mutating func add(_ newElement: Element) {
         append(newElement)
     }
     
+    /// Adds a new element to the array, performing the necessary
+    /// updates to all rx subscribers.
+    ///
+    /// - Parameter newElement: The new element that should be added
     public mutating func append(_ newElement: Element) {
         elements.append(newElement)
         arrayDidChange(ArrayChangeEvent(inserted: [elements.count - 1]))
     }
     
+    /// Adds a new elements to the array, performing the necessary
+    /// updates to all rx subscribers.
+    ///
+    /// - Parameter newElements: The new elements that should be added
     public mutating func append<S : Sequence>(contentsOf newElements: S) where S.Iterator.Element == Element {
         let end = elements.count
         elements.append(contentsOf: newElements)
@@ -115,10 +140,17 @@ extension ObservableArray: MutableCollection {
         arrayDidChange(ArrayChangeEvent(inserted: Array(end..<elements.count)))
     }
     
+    /// Alias for the `append(contentsOf: )` function.
+    ///
+    /// - Parameter newElement: The new element that should be added
     public mutating func addAll<C : Collection>(_ newElements: C) where C.Iterator.Element == Element {
         appendContentsOf(newElements)
     }
     
+    /// Adds a new elements to the array, performing the necessary
+    /// updates to all rx subscribers.
+    ///
+    /// - Parameter newElements: The new elements that should be added
     public mutating func appendContentsOf<C : Collection>(_ newElements: C) where C.Iterator.Element == Element {
         guard !newElements.isEmpty else {
             return
@@ -128,6 +160,8 @@ extension ObservableArray: MutableCollection {
         arrayDidChange(ArrayChangeEvent(inserted: Array(end..<elements.count)))
     }
     
+    /// Removes the last element of the array, if it exists, performing
+    /// the necessary updates to all rx subscribers.
     @discardableResult public mutating func removeLast() -> Element? {
         guard !elements.isEmpty else { return nil }
         let e = elements.removeLast()
@@ -135,17 +169,33 @@ extension ObservableArray: MutableCollection {
         return e
     }
     
+    /// Inserts the element into the array at the given index (before the object
+    /// that currently occupies that position) performing the necessary updates
+    /// to all rx subscribers.
+    ///
+    /// - Parameter newElement: Element to insert
+    /// - Parameter i: Index at which the new element should be inserted
     public mutating func insert(_ newElement: Element, at i: Int) {
         elements.insert(newElement, at: i)
         arrayDidChange(ArrayChangeEvent(inserted: [i]))
     }
     
+    /// Removes the element at the given index of the array performing the
+    /// necessary updates to all rx subscribers.
+    ///
+    /// - Parameter i: Index of the element that should be removed.
     @discardableResult public mutating func remove(at index: Int) -> Element {
         let e = elements.remove(at: index)
         arrayDidChange(ArrayChangeEvent(deleted: [index]))
         return e
     }
     
+    /// Removes all elements of the array, performing the
+    /// necessary updates to all rx subscribers.
+    ///
+    /// - Parameter keepCapacity: `Bool` indicating whether the array
+    ///                           should internally keep its capacity,
+    ///                           which might be a useful optimization.
     public mutating func removeAll(_ keepCapacity: Bool = false) {
         guard !elements.isEmpty else {
             return
@@ -155,6 +205,12 @@ extension ObservableArray: MutableCollection {
         arrayDidChange(ArrayChangeEvent(deleted: Array(0..<es.count)))
     }
     
+    /// Inserts the elements into the array at the given index (before the object
+    /// that currently occupies that position) performing the necessary updates
+    /// to all rx subscribers.
+    ///
+    /// - Parameter newElements: Elements to insert
+    /// - Parameter i: Index at which the new elements should be inserted
     public mutating func insertContentsOf(_ newElements: [Element], atIndex i: Int) {
         guard !newElements.isEmpty else {
             return
@@ -163,6 +219,11 @@ extension ObservableArray: MutableCollection {
         arrayDidChange(ArrayChangeEvent(inserted: Array(i..<i + newElements.count)))
     }
     
+    /// Removes the last element from the array and returns it (if it exists),
+    /// while performing the necessary updates to all rx subscribers.
+    ///
+    /// - Returns: The element occupying the last position of the array (or `nil`
+    ///            if the array was empty)
     public mutating func popLast() -> Element? {
         let e = elements.popLast()
         if e != nil {
@@ -173,6 +234,13 @@ extension ObservableArray: MutableCollection {
 }
 
 extension ObservableArray: RangeReplaceableCollection {
+    /// Replaces the elements living in the given sub-range of indexes
+    /// of the array with the new elements provided, performing all
+    /// necessary updates to all rx subscribers.
+    ///
+    /// - Parameter subRange: The range of elements to be replaced
+    /// - Parameter newCollection: The new elements to be used in replacement
+    ///                            of the old ones.
     public mutating func replaceSubrange<C : Collection>(_ subRange: Range<Int>, with newCollection: C) where C.Iterator.Element == Element {
         let oldCount = elements.count
         elements.replaceSubrange(subRange, with: newCollection)
@@ -198,6 +266,13 @@ extension ObservableArray: CustomStringConvertible {
 
 extension ObservableArray: Sequence {
     
+    /// Function which provides access to individual array elements.
+    /// Any new assignment will be treated as an _update_ if the index was
+    /// already occupied, and as an _insertion_ if it was added on the
+    /// last index. Performs any necessary updates to keep all rx subscribers
+    /// notified of changes.
+    ///
+    /// - Returns: The element at the given index.
     public subscript(index: Int) -> Element {
         get {
             return elements[index]
@@ -224,6 +299,8 @@ extension ObservableArray: Sequence {
         }
     }
     
+    /// - Returns: The last element in the array that meet the given condition (or `nil`
+    ///            if none meet the condition).
     public func last(where condition: (Element) throws -> Bool) rethrows -> Element? {
         for element in reversed() {
             if try condition(element) { return element }
@@ -231,6 +308,7 @@ extension ObservableArray: Sequence {
         return nil
     }
     
+    /// - Returns: The last element of the array, or `nil` if it's empty.
     public func last() -> Element? {
         return self.last { _ in true }
     }

@@ -1,14 +1,13 @@
 //
-//  BindeableMDCCard.swift
+//  BindeableImageView.swift
 //  Swind
 //
-//  Created by Vladimir Pomsztein on 07/03/2020.
+//  Created by Vladimir Pomsztein on 08/03/2020.
 //
 
 import UIKit
-import MaterialComponents
 
-public class BindeableMDCCard: MDCCard {
+public class BindeableImageView: UIImageView {
 
     /// Closure to be called when button gets tapped.
     /// - Note: This is an alternative to the usage of the `bind` method,
@@ -18,7 +17,7 @@ public class BindeableMDCCard: MDCCard {
     ///         actually receive both callbacks).
     public var onTap: (() -> Void)? = nil
     
-    /// Closure to be called when button gets long tapped (ie: long pressed).
+    /// Closure to be called when button gets long tapped (ie: long-pressed).
     /// - Note: This is an alternative to the usage of the `bindForLongTap` method,
     ///         but not mutually exclusive. This means that you can use
     ///         whichever method you like to create the binding, or even
@@ -75,12 +74,12 @@ public class BindeableMDCCard: MDCCard {
         self.longTapBindeeSelector = bindeeSelector
     }
     
-    @objc func didTap(sender: MDCCard) {
+    @objc func didTap(sender: UIImageView) {
         self.onTap?()
         self.tapBindee?.perform(self.tapBindeeSelector)
     }
     
-    @objc func didLongTap(sender: MDCCard) {
+    @objc func didLongTap(sender: UIImageView) {
         self.onLongTap?()
         self.longTapBindee?.perform(self.longTapBindeeSelector)
     }
