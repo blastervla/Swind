@@ -9,17 +9,17 @@ import UIKit
 
 /// Class to be used as base implementation of a tableview datasource
 /// with the use of Swind's view models
-class BaseViewModelTableDataSource: NSObject, UITableViewDataSource {
+open class BaseViewModelTableDataSource: NSObject, UITableViewDataSource {
     
     /// Method that should return the ViewModel for the given position of the
     /// TableView.
-    open func getViewModelForPosition(section: Int, row: Int) -> BaseViewModel {
+    open func getViewModelForPosition(_ indexPath: IndexPath) -> BaseViewModel {
         fatalError("Subclasses need to implement the `getViewModelForPosition()` method.")
     }
     
     /// Method that should return the Binder for the view at the given position of the
     /// TableView.
-    open func getBinderForPosition(section: Int, row: Int) -> BaseBinderProtocol.Type {
+    open func getBinderForModel(_ model: BaseViewModel) -> BaseBinderProtocol.Type {
         fatalError("Subclasses need to implement the `getBinderForPosition()` method.")
     }
     
@@ -44,17 +44,17 @@ class BaseViewModelTableDataSource: NSObject, UITableViewDataSource {
         fatalError("Subclasses need to implement the `getRowAmount()` method.")
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    open func numberOfSections(in tableView: UITableView) -> Int {
         return getSectionAmount()
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return getRowAmount(for: section)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let viewModel = getViewModelForPosition(section: indexPath.section, row: indexPath.row)
-        let binder = getBinderForPosition(section: indexPath.section, row: indexPath.row)
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let viewModel = getViewModelForPosition(indexPath)
+        let binder = getBinderForModel(viewModel)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: viewModel), for: indexPath)
         binder.bind(parent: getParent(), view: cell, viewModel: viewModel)

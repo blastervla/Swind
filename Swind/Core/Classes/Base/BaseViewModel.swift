@@ -17,6 +17,10 @@ open class BaseViewModel: NSObject {
         return self == model.self
     }
     
+    static func == (lhs: BaseViewModel, rhs: BaseViewModel) -> Bool {
+        return lhs.isSameAs(model: rhs)
+    }
+    
     /// Method to be called whenever a UI change should be impacted.
     /// Each call to this method will internally execute the `onChange`
     /// closure, so plan updates accordingly (by batch if possible) so
