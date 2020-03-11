@@ -613,19 +613,19 @@ PODS:
   - RxRelay (5.1.0):
     - RxSwift (~> 5)
   - RxSwift (5.1.0)
-  - Swind (0.4.0):
-    - Swind/Checkbox (= 0.4.0)
-    - Swind/Core (= 0.4.0)
-    - Swind/Material (= 0.4.0)
-    - Swind/Reactive (= 0.4.0)
-  - Swind/Checkbox (0.4.0):
+  - Swind (0.6.0):
+    - Swind/Checkbox (= 0.6.0)
+    - Swind/Core (= 0.6.0)
+    - Swind/Material (= 0.6.0)
+    - Swind/Reactive (= 0.6.0)
+  - Swind/Checkbox (0.6.0):
     - M13Checkbox
     - Swind/Core
-  - Swind/Core (0.4.0)
-  - Swind/Material (0.4.0):
+  - Swind/Core (0.6.0)
+  - Swind/Material (0.6.0):
     - MaterialComponents
     - Swind/Core
-  - Swind/Reactive (0.4.0):
+  - Swind/Reactive (0.6.0):
     - RxCocoa (~> 5)
     - RxSwift (~> 5)
     - Swind/Core
@@ -638,7 +638,7 @@ DEPENDENCIES:
   - Swind (from `./`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - M13Checkbox
     - MaterialComponents
     - MDFInternationalization
@@ -663,8 +663,8 @@ SPEC CHECKSUMS:
   RxCocoa: 13d2a4d7546a34b8ececae8c281e4ea1dbb94f2b
   RxRelay: a168bd6caf712d00c676ac344e9295afc93b418e
   RxSwift: ad5874f24bb0dbffd1e9bb8443604e3578796c7a
-  Swind: a1e3b6f5a0ad46f45517f0f1907df3e6173c3f01
+  Swind: 843679d110c92077fc3a08357e65f7efd28aac53
 
 PODFILE CHECKSUM: f236ec883317eda73f50e809b2352dd4baf25371
 
-COCOAPODS: 1.7.4
+COCOAPODS: 1.9.0

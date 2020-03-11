@@ -21,6 +21,12 @@
 		940C0C6C2413EE790056250B /* ShowRobotBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940C0C6B2413EE790056250B /* ShowRobotBinder.swift */; };
 		9488925424101781000FBE60 /* RobotSpecialAbilityLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9488925224101781000FBE60 /* RobotSpecialAbilityLayout.swift */; };
 		9488925524101781000FBE60 /* RobotSpecialAbilityLayout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9488925324101781000FBE60 /* RobotSpecialAbilityLayout.xib */; };
+		B7C02D5624186DB30045B58B /* RobotTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C02D5524186DB30045B58B /* RobotTableViewCell.swift */; };
+		B7C02D5824186E050045B58B /* RobotTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C02D5724186E050045B58B /* RobotTableViewController.swift */; };
+		B7C02D5A24186EAF0045B58B /* RobotTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C02D5924186EAF0045B58B /* RobotTableAdapter.swift */; };
+		B7C02D5E24186F700045B58B /* RobotTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7C02D5D24186F700045B58B /* RobotTableViewCell.xib */; };
+		B7C02D622418737B0045B58B /* RobotTableViewCellBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C02D612418737B0045B58B /* RobotTableViewCellBinder.swift */; };
+		B7C02D64241879660045B58B /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C02D63241879660045B58B /* ExampleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +51,12 @@
 		9488925224101781000FBE60 /* RobotSpecialAbilityLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotSpecialAbilityLayout.swift; sourceTree = "<group>"; };
 		9488925324101781000FBE60 /* RobotSpecialAbilityLayout.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RobotSpecialAbilityLayout.xib; sourceTree = "<group>"; };
 		ACEFB44AD64C1B244C5F8918 /* Pods_Swind_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swind_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7C02D5524186DB30045B58B /* RobotTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotTableViewCell.swift; sourceTree = "<group>"; };
+		B7C02D5724186E050045B58B /* RobotTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotTableViewController.swift; sourceTree = "<group>"; };
+		B7C02D5924186EAF0045B58B /* RobotTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotTableAdapter.swift; sourceTree = "<group>"; };
+		B7C02D5D24186F700045B58B /* RobotTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RobotTableViewCell.xib; sourceTree = "<group>"; };
+		B7C02D612418737B0045B58B /* RobotTableViewCellBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotTableViewCellBinder.swift; sourceTree = "<group>"; };
+		B7C02D63241879660045B58B /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		C06A60693EDD0DFC67410EB3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,6 +175,7 @@
 				940C0C6124113AB50056250B /* RobotBinder.swift */,
 				940C0C6324113CCD0056250B /* SpecialAbilityBinder.swift */,
 				940C0C6B2413EE790056250B /* ShowRobotBinder.swift */,
+				B7C02D612418737B0045B58B /* RobotTableViewCellBinder.swift */,
 			);
 			path = Binders;
 			sourceTree = "<group>";
@@ -172,6 +185,9 @@
 			children = (
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				940C0C692413EE370056250B /* ShowRobotController.swift */,
+				B7C02D5724186E050045B58B /* RobotTableViewController.swift */,
+				B7C02D5924186EAF0045B58B /* RobotTableAdapter.swift */,
+				B7C02D63241879660045B58B /* ExampleViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -181,6 +197,8 @@
 			children = (
 				9488925224101781000FBE60 /* RobotSpecialAbilityLayout.swift */,
 				9488925324101781000FBE60 /* RobotSpecialAbilityLayout.xib */,
+				B7C02D5524186DB30045B58B /* RobotTableViewCell.swift */,
+				B7C02D5D24186F700045B58B /* RobotTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -247,6 +265,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7C02D5E24186F700045B58B /* RobotTableViewCell.xib in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				9488925524101781000FBE60 /* RobotSpecialAbilityLayout.xib in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
@@ -322,11 +341,16 @@
 			files = (
 				9488925424101781000FBE60 /* RobotSpecialAbilityLayout.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				B7C02D5624186DB30045B58B /* RobotTableViewCell.swift in Sources */,
 				940C0C6224113AB50056250B /* RobotBinder.swift in Sources */,
+				B7C02D622418737B0045B58B /* RobotTableViewCellBinder.swift in Sources */,
 				940C0C6C2413EE790056250B /* ShowRobotBinder.swift in Sources */,
+				B7C02D5824186E050045B58B /* RobotTableViewController.swift in Sources */,
 				940C0C5D24112B4D0056250B /* RobotModel.swift in Sources */,
 				940C0C6424113CCD0056250B /* SpecialAbilityBinder.swift in Sources */,
 				940C0C5F24112DF50056250B /* SpecialAbilityModel.swift in Sources */,
+				B7C02D5A24186EAF0045B58B /* RobotTableAdapter.swift in Sources */,
+				B7C02D64241879660045B58B /* ExampleViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				940C0C6A2413EE370056250B /* ShowRobotController.swift in Sources */,
 			);
