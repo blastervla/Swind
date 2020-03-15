@@ -20,7 +20,7 @@ class RobotTableAdapter: BaseViewModelTableDataSource, BaseViewProtocol, BaseVie
     
     /// Method that should return the ViewModel for the given position of the
     /// TableView.
-    func getViewModelForPosition(_ indexPath: IndexPath) -> BaseViewModel {
+    func getViewModelForPosition(_ tableView: UITableView, _ indexPath: IndexPath) -> BaseViewModel {
         switch indexPath.row {
         case 0:
             return {
@@ -82,7 +82,7 @@ class RobotTableAdapter: BaseViewModelTableDataSource, BaseViewProtocol, BaseVie
     
     /// Method that should return the Binder for the view at the given position of the
     /// TableView.
-    func getBinderForModel(_ model: BaseViewModel) -> BaseBinderProtocol.Type {
+    func getBinderForModel(_ tableView: UITableView, _ model: BaseViewModel) -> BaseBinderProtocol.Type {
         switch model {
         case is RobotModel:
             return RobotTableViewCellBinder.self
@@ -91,21 +91,21 @@ class RobotTableAdapter: BaseViewModelTableDataSource, BaseViewProtocol, BaseVie
         }
     }
     
-    func getReuseId(_ model: BaseViewModel) -> String {
+    func getReuseId(_ tableView: UITableView, _ model: BaseViewModel) -> String {
         return String(describing: type(of: model.self))
     }
     
     /// Method that should return the parent of all views (usually the ViewController)
-    func getParent() -> BaseViewProtocol {
+    func getParent(_ tableView: UITableView) -> BaseViewProtocol {
         return parent ?? self
     }
     
     /// Method that should return the amount of rows for the table
-    func getRowAmount(for section: Int) -> Int {
+    func getRowAmount(_ tableView: UITableView, for section: Int) -> Int {
         return 5
     }
     
-    func getSectionAmount() -> Int {
+    func getSectionAmount(_ tableView: UITableView) -> Int {
         return 1
     }
 }

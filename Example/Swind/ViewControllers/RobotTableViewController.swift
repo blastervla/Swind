@@ -39,7 +39,7 @@ class RobotTableViewController: UIViewController {
 
 extension RobotTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.touchedVM = self.adapter.getViewModelForPosition(indexPath) as? RobotModel
+        self.touchedVM = self.adapter.getViewModelForPosition(tableView, indexPath) as? RobotModel
         self.performSegue(withIdentifier: "ShowRobotFromTable", sender: self)
     }
 }

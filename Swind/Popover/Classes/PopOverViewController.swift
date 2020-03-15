@@ -7,12 +7,12 @@
 
 import UIKit
 
+public typealias PopupMenu = PopOverViewController
+public typealias PopOverEntry = (id: String, text: String)
+
 public class PopOverViewController: UIViewController, BaseViewProtocol {
 
     @IBOutlet weak var stackView: BindeableStackView!
-    
-    public typealias PopupMenu = PopOverViewController
-    public typealias PopOverEntry = (id: String, text: String)
     
     public var entries = [PopOverEntry]()
     public var parentView: BaseViewProtocol?
