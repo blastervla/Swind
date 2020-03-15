@@ -114,8 +114,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brrr... Brrr... Please setup a name for your robot..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DnO-XZ-FmN">
-                                                <rect key="frame" x="32" y="107" width="311" height="41"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brrr... Brrr... Please setup a name for your robot..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DnO-XZ-FmN" customClass="BindeableLabel" customModule="Swind">
+                                                <rect key="frame" x="32" y="107" width="281.5" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -269,7 +269,7 @@
                                             <constraint firstItem="DnO-XZ-FmN" firstAttribute="top" secondItem="L6L-Q8-mXd" secondAttribute="bottom" constant="8" id="ZCg-Uh-L7i"/>
                                             <constraint firstAttribute="trailing" secondItem="sxx-mn-Ivk" secondAttribute="trailing" constant="32" id="aEz-kA-gm5"/>
                                             <constraint firstItem="GgT-ky-qPF" firstAttribute="leading" secondItem="laZ-ff-KtX" secondAttribute="leading" constant="32" id="aaA-gv-wka"/>
-                                            <constraint firstAttribute="trailing" secondItem="DnO-XZ-FmN" secondAttribute="trailing" constant="32" id="bho-VT-sZR"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DnO-XZ-FmN" secondAttribute="trailing" constant="32" id="bho-VT-sZR"/>
                                             <constraint firstAttribute="trailing" secondItem="L6L-Q8-mXd" secondAttribute="trailing" constant="32" id="cDK-S7-Yn9"/>
                                             <constraint firstItem="otv-Ka-r9D" firstAttribute="leading" secondItem="sY4-W4-6R5" secondAttribute="trailing" constant="8" id="cSU-rR-km4"/>
                                             <constraint firstItem="tZy-NP-1PR" firstAttribute="centerY" secondItem="7U4-pf-sGT" secondAttribute="centerY" id="dTu-sL-UZi"/>
@@ -417,6 +417,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="yDK-yg-JRh"/>
+        <segue reference="yFx-fz-9zY"/>
     </inferredMetricsTieBreakers>
 </document>

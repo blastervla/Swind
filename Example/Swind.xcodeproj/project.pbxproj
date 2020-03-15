@@ -215,6 +215,7 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				A60714399A97276FD18C7184 /* [CP] Embed Pods Frameworks */,
+				F37A8345C05D826BF8C87963 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -330,6 +331,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Swind_Example/Pods-Swind_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F37A8345C05D826BF8C87963 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Swind_Example/Pods-Swind_Example-resources.sh",
+				"${PODS_ROOT}/../Swind/Popover/Classes/PopOverViewController.xib",
+				"${PODS_ROOT}/../Swind/Popover/Classes/Support/PopOverEntryView.xib",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PopOverViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PopOverEntryView.nib",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Swind_Example/Pods-Swind_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

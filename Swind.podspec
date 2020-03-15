@@ -64,5 +64,14 @@ Pod::Spec.new do |s|
     ss.dependency 'Swind/Core'
     ss.dependency 'MaterialComponents'
   end
+  
+  s.subspec 'Popover' do |ss|
+      ss.source_files = "Swind/Popover/Classes/**/*.{h,m,swift}"
+      ss.resources    = "Swind/Popover/Classes/**/*.xib"#, "Swind/Popover/Assets/**/*.xcassets"
+      
+      ss.dependency 'Swind/Core'
+      ss.dependency 'Swind/Reactive'
+      ss.dependency 'MaterialComponents'
+  end
 
 end

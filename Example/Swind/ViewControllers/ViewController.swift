@@ -12,7 +12,7 @@ import Swind
 class ViewController: UIViewController, BaseViewProtocol {
 
     @IBOutlet weak var nameTextField: BindeableTextField!
-    @IBOutlet weak var nameErrorLabel: UILabel!
+    @IBOutlet weak var nameErrorLabel: BindeableLabel!
     
     @IBOutlet weak var genderTextField: UITextField!
     @IBOutlet weak var realKidSwitch: BindeableSwitch!
