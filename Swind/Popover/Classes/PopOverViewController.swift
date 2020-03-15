@@ -8,7 +8,7 @@
 import UIKit
 
 public typealias PopupMenu = PopOverViewController
-public typealias PopOverEntry = (id: String, text: String)
+public typealias PopOverEntry = (id: String, text: String, model: BaseViewModel?)
 
 public class PopOverViewController: UIViewController, BaseViewProtocol {
 
@@ -54,7 +54,7 @@ public class PopOverViewController: UIViewController, BaseViewProtocol {
     override public func viewDidLoad() {
         super.viewDidLoad()
         var vmEntries = ObservableArray<BaseViewModel>()
-        vmEntries.addAll(entries.map { PopOverEntryModel(popOverId: self.id, entryId: $0.id, text: $0.text) })
+        vmEntries.addAll(entries.map { PopOverEntryModel(popOverId: self.id, entryId: $0.id, text: $0.text, associatedViewModel: $0.model) })
         
         self.stackView.bind(vmEntries, parent: self.parentView ?? self, layoutNibName: String(describing: PopOverEntryView.self), bundle: .init(for: PopOverEntryView.self), binder: PopOverEntryBinder.self)
         
