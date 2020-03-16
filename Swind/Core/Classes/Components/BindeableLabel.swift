@@ -79,9 +79,11 @@ public class BindeableLabel: UILabel {
         self.tapBindee?.perform(self.tapBindeeSelector)
     }
     
-    @objc func didLongTap(sender: UILabel) {
-        self.onLongTap?()
-        self.longTapBindee?.perform(self.longTapBindeeSelector)
+    @objc func didLongTap(sender: UILongPressGestureRecognizer) {
+        if (sender.state == .began) {
+            self.onLongTap?()
+            self.longTapBindee?.perform(self.longTapBindeeSelector)
+        }
     }
 
 }

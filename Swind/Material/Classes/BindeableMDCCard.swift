@@ -80,9 +80,11 @@ public class BindeableMDCCard: MDCCard {
         self.tapBindee?.perform(self.tapBindeeSelector)
     }
     
-    @objc func didLongTap(sender: MDCCard) {
-        self.onLongTap?()
-        self.longTapBindee?.perform(self.longTapBindeeSelector)
+    @objc func didLongTap(sender: UILongPressGestureRecognizer) {
+        if (sender.state == .began) {
+            self.onLongTap?()
+            self.longTapBindee?.perform(self.longTapBindeeSelector)
+        }
     }
 
 }
