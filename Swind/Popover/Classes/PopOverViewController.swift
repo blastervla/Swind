@@ -56,10 +56,15 @@ public class PopOverViewController: UIViewController, BaseViewProtocol {
         var vmEntries = ObservableArray<BaseViewModel>()
         vmEntries.addAll(entries.map { PopOverEntryModel(popOverId: self.id, entryId: $0.id, text: $0.text, associatedViewModel: $0.model) })
         
-        self.stackView.bind(vmEntries, parent: self.parentView ?? self, layoutNibName: String(describing: PopOverEntryView.self), bundle: .init(for: PopOverEntryView.self), binder: PopOverEntryBinder.self)
+        self.stackView.bind(vmEntries, parent: self, layoutNibName: String(describing: PopOverEntryView.self), bundle: .init(for: PopOverEntryView.self), binder: PopOverEntryBinder.self)
         
         self.preferredWidth = self.stackView.subviews.map { $0.systemLayoutSizeFitting(.zero).width }.max() ?? 96
         self.preferredContentSize = CGSize(width: 52, height: 1)
+    }
+    
+    public func onClick(_ v: UIView, _ viewModel: BaseViewModel) {
+        self.dismiss(animated: true, completion: nil)
+        self.parentView?.onClick?(v, viewModel)
     }
     
     public override func viewDidAppear(_ animated: Bool) {
