@@ -63,8 +63,9 @@ public class PopOverViewController: UIViewController, BaseViewProtocol {
     }
     
     public func onClick(_ v: UIView, _ viewModel: BaseViewModel) {
-        self.dismiss(animated: true, completion: nil)
-        self.parentView?.onClick?(v, viewModel)
+        self.dismiss(animated: true) {
+            self.parentView?.onClick?(v, viewModel)
+        }
     }
     
     public override func viewDidAppear(_ animated: Bool) {

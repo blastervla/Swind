@@ -6,24 +6,34 @@
 //
 
 import UIKit
+import MaterialComponents
 
-class BindeableBottomSheet: MDCBottomSheetController {
+public typealias BottomSheetDialog = MDCBottomSheetController
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+extension MDCBottomSheetController {
+    @discardableResult
+    public static func show<T: UIViewController & BaseViewProtocol>(inContext parent: T, with model: BaseViewModel, layout controller: BindeableBottomSheetDelegate, binder: BaseBinderProtocol.Type, dragDownToDismiss: Bool = true, completion: (() -> Void)? = nil) -> MDCBottomSheetController {
+        let sheet = MDCBottomSheetController(contentViewController: controller)
+        
+        // Behaviour customization
+        sheet.dismissOnDraggingDownSheet = dragDownToDismiss
+        
+        // UI customization
+        let shapeGenerator = MDCRectangleShapeGenerator()
+        let cornerTreatment = MDCRoundedCornerTreatment(radius: 16)
+        shapeGenerator.topLeftCorner = cornerTreatment
+        shapeGenerator.topRightCorner = cornerTreatment
+        
+        sheet.setShapeGenerator(shapeGenerator, for: .preferred)
+        sheet.setShapeGenerator(shapeGenerator, for: .extended)
+//        sheet.setShapeGenerator(shapeGenerator, for: .closed)
+        
+        // Present
+        parent.present(sheet, animated: true, completion: completion)
+        
+        // Bind
+        binder.bind(parent: parent, view: controller, viewModel: model)
+        
+        return sheet
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
