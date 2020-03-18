@@ -12,7 +12,7 @@ public typealias BottomSheetDialog = MDCBottomSheetController
 
 extension MDCBottomSheetController {
     @discardableResult
-    public static func show<T: UIViewController & BaseViewProtocol>(inContext parent: T, with model: BaseViewModel, layout controller: BindeableBottomSheetDelegate, binder: BaseBinderProtocol.Type, dragDownToDismiss: Bool = true, completion: (() -> Void)? = nil) -> MDCBottomSheetController {
+    public static func show<T: UIViewController & BaseViewProtocol>(inContext parent: T, with model: BaseViewModel, layout controller: UIViewController, binder: BaseBinderProtocol.Type, dragDownToDismiss: Bool = true, completion: (() -> Void)? = nil) -> MDCBottomSheetController {
         let sheet = MDCBottomSheetController(contentViewController: controller)
         
         // Behaviour customization
