@@ -19,13 +19,17 @@ public class PopOverViewController: UIViewController, BaseViewProtocol {
     public var id: String = "default"
     
     public static func show<T: UIViewController & BaseViewProtocol>(parent: T, source: UIView, entries: [PopOverEntry], id: String = "default") {
+        show(presenter: parent, parent: parent, source: source, entries: entries, id: id)
+    }
+    
+    public static func show(presenter: UIViewController, parent: BaseViewProtocol, source: UIView, entries: [PopOverEntry], id: String = "default") {
         let popupController = PopOverViewController()
         popupController.id = id
         popupController.parentView = parent
         popupController.entries = entries
         popupController.popoverPresentationController?.sourceView = source
         popupController.popoverPresentationController?.sourceRect = source.bounds
-        parent.present(popupController, animated: true, completion: nil)
+        presenter.present(popupController, animated: true, completion: nil)
     }
     
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
