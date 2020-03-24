@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BindeableBottomSheet" customModule="Swind" customModuleProvider="target">
+            <connections>
+                <outlet property="closeButtonHeightConstraint" destination="Lcj-gx-ty0" id="ede-UK-dgZ"/>
+                <outlet property="contentContainer" destination="0gL-EW-moI" id="3QR-38-LaW"/>
+                <outlet property="modalCloseButton" destination="uG2-gy-Fla" id="wMe-oh-9AT"/>
+                <outlet property="modalHandle" destination="eC2-fq-DIk" id="qfU-2X-kWJ"/>
+                <outlet property="modalView" destination="Wmx-P2-0xr" id="9Jj-Mx-hjn"/>
+                <outlet property="navbarBackgroundView" destination="V0d-Yx-NUx" id="r6L-fg-ygS"/>
+                <outlet property="navbarSeparatorView" destination="b0Q-ux-s8G" id="XFr-Ju-mfo"/>
+                <outlet property="topConstraint" destination="3vw-Ip-Mjp" id="7nI-v6-9Z3"/>
+                <outlet property="topContainerConstraint" destination="rcN-bb-aJR" id="YbG-31-RqR"/>
+                <outlet property="topNavbarSeparatorConstraint" destination="XfR-TB-AxP" id="CTU-AG-Gff"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="574"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V0d-Yx-NUx" userLabel="NavBar Background View">
+                    <rect key="frame" x="0.0" y="44" width="414" height="32"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="6Ye-Q7-Pxe"/>
+                    </constraints>
+                </view>
+                <view verifyAmbiguity="off" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wmx-P2-0xr">
+                    <rect key="frame" x="0.0" y="44" width="414" height="496"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_swind_close" translatesAutoresizingMaskIntoConstraints="NO" id="uG2-gy-Fla">
+                            <rect key="frame" x="4" y="4" width="42" height="42"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="uG2-gy-Fla" secondAttribute="height" multiplier="1:1" id="BJN-A4-GjB"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="42" id="Lcj-gx-ty0"/>
+                            </constraints>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eC2-fq-DIk">
+                            <rect key="frame" x="179" y="16" width="56" height="4"/>
+                            <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="4" id="LFv-qp-1eu"/>
+                                <constraint firstAttribute="width" constant="56" id="ljc-4z-DHG"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0Q-ux-s8G" userLabel="Navbar Separator View">
+                            <rect key="frame" x="0.0" y="50" width="414" height="1"/>
+                            <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="3v8-Bl-2tI"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="445" translatesAutoresizingMaskIntoConstraints="NO" id="0gL-EW-moI" userLabel="Container View">
+                            <rect key="frame" x="0.0" y="51" width="414" height="445"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="uG2-gy-Fla" firstAttribute="leading" secondItem="Wmx-P2-0xr" secondAttribute="leading" constant="4" id="4Rx-Ik-Rll"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="0gL-EW-moI" secondAttribute="bottom" id="ANc-f4-zgq"/>
+                        <constraint firstAttribute="trailing" secondItem="0gL-EW-moI" secondAttribute="trailing" id="Maa-8B-J3U"/>
+                        <constraint firstItem="eC2-fq-DIk" firstAttribute="top" secondItem="Wmx-P2-0xr" secondAttribute="top" constant="16" id="WzA-Gw-XJS"/>
+                        <constraint firstItem="eC2-fq-DIk" firstAttribute="centerX" secondItem="Wmx-P2-0xr" secondAttribute="centerX" id="XYN-cm-A7Q"/>
+                        <constraint firstItem="b0Q-ux-s8G" firstAttribute="top" secondItem="eC2-fq-DIk" secondAttribute="bottom" constant="30" id="XfR-TB-AxP"/>
+                        <constraint firstAttribute="trailing" secondItem="b0Q-ux-s8G" secondAttribute="trailing" id="bE8-xH-haJ"/>
+                        <constraint firstItem="0gL-EW-moI" firstAttribute="leading" secondItem="Wmx-P2-0xr" secondAttribute="leading" id="bY8-H9-KfJ"/>
+                        <constraint firstItem="b0Q-ux-s8G" firstAttribute="top" secondItem="uG2-gy-Fla" secondAttribute="bottom" constant="4" id="dmJ-81-uke"/>
+                        <constraint firstItem="uG2-gy-Fla" firstAttribute="top" secondItem="Wmx-P2-0xr" secondAttribute="top" constant="4" id="f1Y-HK-tLs"/>
+                        <constraint firstItem="b0Q-ux-s8G" firstAttribute="leading" secondItem="Wmx-P2-0xr" secondAttribute="leading" id="rOP-fE-2nk"/>
+                        <constraint firstItem="0gL-EW-moI" firstAttribute="top" secondItem="b0Q-ux-s8G" secondAttribute="bottom" id="rcN-bb-aJR"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="jJS-uC-Uur" appends="YES" id="JOr-yt-2gH"/>
+                    </connections>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Wmx-P2-0xr" firstAttribute="leading" secondItem="mFd-li-DPp" secondAttribute="leading" id="2ya-Nj-zQj"/>
+                <constraint firstItem="Wmx-P2-0xr" firstAttribute="top" secondItem="mFd-li-DPp" secondAttribute="top" id="3vw-Ip-Mjp"/>
+                <constraint firstItem="V0d-Yx-NUx" firstAttribute="top" secondItem="Wmx-P2-0xr" secondAttribute="top" id="91l-Sb-1yN"/>
+                <constraint firstItem="V0d-Yx-NUx" firstAttribute="leading" secondItem="mFd-li-DPp" secondAttribute="leading" id="Raf-wQ-oNm"/>
+                <constraint firstItem="Wmx-P2-0xr" firstAttribute="height" secondItem="mFd-li-DPp" secondAttribute="height" id="WhK-ij-5JJ"/>
+                <constraint firstItem="mFd-li-DPp" firstAttribute="trailing" secondItem="V0d-Yx-NUx" secondAttribute="trailing" id="g0H-zc-x0N"/>
+                <constraint firstItem="mFd-li-DPp" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="Wmx-P2-0xr" secondAttribute="bottom" id="hz7-AU-uAt"/>
+                <constraint firstItem="mFd-li-DPp" firstAttribute="trailing" secondItem="Wmx-P2-0xr" secondAttribute="trailing" id="mfo-dq-3if"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="mFd-li-DPp"/>
+            <point key="canvasLocation" x="14.492753623188406" y="-156.02678571428569"/>
+        </view>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="jJS-uC-Uur">
+            <connections>
+                <action selector="panRecognizerWithRecognizer:" destination="-1" id="DZT-Wi-5hr"/>
+            </connections>
+        </panGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="ic_swind_close" width="24" height="24"/>
+    </resources>
+</document>
