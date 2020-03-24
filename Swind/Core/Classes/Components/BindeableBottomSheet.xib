@@ -40,7 +40,7 @@
                 <view verifyAmbiguity="off" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wmx-P2-0xr">
                     <rect key="frame" x="0.0" y="44" width="414" height="496"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_swind_close" translatesAutoresizingMaskIntoConstraints="NO" id="uG2-gy-Fla">
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uG2-gy-Fla">
                             <rect key="frame" x="4" y="4" width="42" height="42"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="uG2-gy-Fla" secondAttribute="height" multiplier="1:1" id="BJN-A4-GjB"/>
@@ -108,7 +108,4 @@
             </connections>
         </panGestureRecognizer>
     </objects>
-    <resources>
-        <image name="ic_swind_close" width="24" height="24"/>
-    </resources>
 </document>

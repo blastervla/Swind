@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Swind'
-  s.version          = '0.13.0'
+  s.version          = '0.13.1'
   s.summary          = 'Databinding for Swift iOS projects, made simple.'
 
 # This description is used to generate tags and improve search results.
@@ -38,6 +38,7 @@ Pod::Spec.new do |s|
   s.subspec 'Core' do |ss|
     ss.source_files = "Swind/Core/Classes/**/*.{h,m,swift}"
     ss.resources    = "Swind/Core/Classes/**/*.xib", "Swind/Core/Assets/**/*.xcassets"
+    ss.resource_bundles = { 'SwindCore' => ["Swind/Core/Classes/**/*.xib", "Swind/Core/Assets/**/*.xcassets"] }
   end
 
   s.subspec 'Reactive' do |ss|

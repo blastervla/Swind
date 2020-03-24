@@ -11,7 +11,7 @@ public class BindeableBottomSheet: UIViewController {
 
     @IBOutlet private weak var navbarBackgroundView: UIView!
     @IBOutlet private weak var navbarSeparatorView: UIView!
-    @IBOutlet private weak var modalCloseButton: UIView!
+    @IBOutlet private weak var modalCloseButton: UIImageView!
     @IBOutlet private weak var modalHandle: UIView!
     
     @IBOutlet private weak var modalView: UIView!
@@ -52,7 +52,7 @@ public class BindeableBottomSheet: UIViewController {
         self.isPannable = false // TODO: Add proper support for pannable
         self.canBounce = true // TODO: Add proper support for canBounce
         self.outsideTapCloses = outsideTapCloses
-        super.init(nibName: String(describing: BindeableBottomSheet.self), bundle: Bundle.init(for: BindeableBottomSheet.self))
+        super.init(nibName: String(describing: BindeableBottomSheet.self), bundle: Bundle.swindBundle())
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -85,6 +85,10 @@ public class BindeableBottomSheet: UIViewController {
         commonSetContent(contentView)
     }
     
+    public func setCloseImage(_ image: UIImage?) {
+        self.modalCloseButton.image = image
+    }
+    
     private func commonSetContent(_ content: UIView) {
         let scrollViews = content.subviews.compactMap { view in view as? UIScrollView }
         guard let scrollview = scrollViews.first else { return }
@@ -93,10 +97,16 @@ public class BindeableBottomSheet: UIViewController {
         scrollview.isScrollEnabled = false
     }
     
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        setCloseImage(UIImage(named: "ic_swind_close", in: Bundle.swindBundle(), compatibleWith: nil))
+    }
+    
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Fix for plus devices
+        
         self.view.frame = UIScreen.main.bounds
         
         self.view.layoutIfNeeded()
