@@ -138,6 +138,7 @@ public class BindeableBottomSheet: UIViewController {
     }
     
     override public func dismiss(animated: Bool, completion: (() -> Void)? = nil) {
+        self.presentedViewController?.dismiss(animated: animated, completion: nil)
         if animated {
             self.isClosing = true
             UIView.animate(withDuration: 0.2, animations: {[weak self] in

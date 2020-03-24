@@ -29,19 +29,25 @@ public class PopOverViewController: UIViewController, BaseViewProtocol {
         popupController.entries = entries
         popupController.popoverPresentationController?.sourceView = source
         popupController.popoverPresentationController?.sourceRect = source.bounds
+        popupController.popoverPresentationController?.permittedArrowDirections = resolveArrowDirection(source: source, entries: entries)
+        popupController.popoverPresentationController?.delegate = popupController
         presenter.present(popupController, animated: true, completion: nil)
     }
     
-    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.popoverPresentationController?.permittedArrowDirections = .up
-        self.popoverPresentationController?.delegate = self
-    }
+    private static let ENTRY_HEIGHT = 48
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.popoverPresentationController?.permittedArrowDirections = .up
-        self.popoverPresentationController?.delegate = self
+    private static func resolveArrowDirection(source: UIView, entries: [PopOverEntry]) -> UIPopoverArrowDirection {
+        let roughHeight = CGFloat(ENTRY_HEIGHT * entries.count)
+        
+        guard let sourceEndY = source.superview?.convert(CGPoint(x: source.frame.origin.x + source.frame.size.width, y: source.frame.origin.y + source.frame.size.height), to: nil).y else { return .up }
+        
+        let screenHeight = UIScreen.main.bounds.height - 32
+        
+        if screenHeight - sourceEndY < roughHeight {
+            return .down
+        } else {
+            return .up
+        }
     }
     
     public override var modalPresentationStyle: UIModalPresentationStyle {
