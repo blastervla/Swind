@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BindeableView: UIView {
+public class BindeableView: UIView {
 
     /// Closure to be called when button gets tapped.
     /// - Note: This is an alternative to the usage of the `bind` method,
