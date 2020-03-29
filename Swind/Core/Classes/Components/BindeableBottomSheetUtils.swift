@@ -150,6 +150,66 @@ extension BindeableBottomSheet {
         return sheet
     }
     
+    /// Creates and presents a BindeableBottomSheet with the given parameters.
+    /// - Parameter presenter: The UIViewController that should present the sheet.
+    /// - Parameter layout: The layout to present.
+    /// - Parameter hasFullScreen: Trait indicating if the bottom sheet has fullscreen
+    ///                            functionality enabled. `true` by default
+    /// - Parameter outsideTapCloses: Trait indicating if the bottom sheet can be closed by
+    ///                               tapping outside of it. `false` by default
+    /// - Parameter preferredContentHeight: Indicates the preferredContentSize height for the
+    ///                                     content view. Calculated automatically if left `nil`.
+    /// - Parameter completion: Presentation completion callback.
+    /// - Returns: The bottom sheet
+    @discardableResult
+    public static func show(presenter: UIViewController,
+                            layout view: UIView,
+                            hasFullScreen: Bool = true,
+                            outsideTapCloses: Bool = false,
+                            preferredContentHeight: Float? = nil,
+                            completion: (() -> Void)? = nil) -> BindeableBottomSheet {
+        let sheet = createAndPresentBottomSheet(presenter: presenter,
+                                                layout: view,
+                                                hasFullScreen: hasFullScreen,
+                                                outsideTapCloses: outsideTapCloses,
+                                                preferredContentHeight: preferredContentHeight,
+                                                completion: completion)
+        
+        sheet.setContent(view)
+        
+        return sheet
+    }
+    
+    /// Creates and presents a BindeableBottomSheet with the given parameters.
+    /// - Parameter presenter: The UIViewController that should present the sheet.
+    /// - Parameter layout: The layout to present.
+    /// - Parameter hasFullScreen: Trait indicating if the bottom sheet has fullscreen
+    ///                            functionality enabled. `true` by default
+    /// - Parameter outsideTapCloses: Trait indicating if the bottom sheet can be closed by
+    ///                               tapping outside of it. `false` by default
+    /// - Parameter preferredContentHeight: Indicates the preferredContentSize height for the
+    ///                                     content view. Calculated automatically if left `nil`.
+    /// - Parameter completion: Presentation completion callback.
+    /// - Returns: The bottom sheet
+    @discardableResult
+    public static func show(presenter: UIViewController,
+                            layout controller: UIViewController,
+                            hasFullScreen: Bool = true,
+                            outsideTapCloses: Bool = false,
+                            preferredContentHeight: Float? = nil,
+                            completion: (() -> Void)? = nil) -> BindeableBottomSheet {
+        let sheet = createAndPresentBottomSheet(presenter: presenter,
+                                                layout: controller.view,
+                                                hasFullScreen: hasFullScreen,
+                                                outsideTapCloses: outsideTapCloses,
+                                                preferredContentHeight: preferredContentHeight,
+                                                completion: completion)
+        
+        sheet.setContent(controller)
+        
+        return sheet
+    }
+    
     fileprivate static func createAndPresentBottomSheet(presenter: UIViewController,
                                                         layout view: UIView,
                                                         hasFullScreen: Bool,

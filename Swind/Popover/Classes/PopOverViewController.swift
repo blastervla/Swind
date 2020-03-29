@@ -18,6 +18,8 @@ public class PopOverViewController: UIViewController, BaseViewProtocol {
     public var parentView: BaseViewProtocol?
     public var id: String = "default"
     
+    private var onItemClick: ((PopOverEntryModel) -> Void)?
+    
     public static func show<T: UIViewController & BaseViewProtocol>(parent: T, source: UIView, entries: [PopOverEntry], id: String = "default") {
         show(presenter: parent, parent: parent, source: source, entries: entries, id: id)
     }
@@ -72,9 +74,21 @@ public class PopOverViewController: UIViewController, BaseViewProtocol {
         self.preferredContentSize = CGSize(width: 52, height: 1)
     }
     
+    /// Sets a new OnClickListener to be triggered whenever an item is clicked.
+    /// - Parameter listener: The listener to call upon item click
+    /// - Note: Listener will be called instead of the parent onClick method
+    ///         should the listener be non-nil.
+    public func setOnClickListener(_ listener: ((PopOverEntryModel) -> Void)?) {
+        self.onItemClick = listener
+    }
+    
     public func onClick(_ v: UIView, _ viewModel: BaseViewModel) {
         self.dismiss(animated: true) {
-            self.parentView?.onClick?(v, viewModel)
+            if let onItemClick = self.onItemClick, let viewModel = viewModel as? PopOverEntryModel {
+                onItemClick(viewModel)
+            } else {
+                self.parentView?.onClick?(v, viewModel)
+            }
         }
     }
     
