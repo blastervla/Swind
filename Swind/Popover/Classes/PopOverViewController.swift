@@ -20,11 +20,11 @@ public class PopOverViewController: UIViewController, BaseViewProtocol {
     
     private var onItemClick: ((PopOverEntryModel) -> Void)?
     
-    public static func show<T: UIViewController & BaseViewProtocol>(parent: T, source: UIView, entries: [PopOverEntry], id: String = "default") {
-        show(presenter: parent, parent: parent, source: source, entries: entries, id: id)
+    public static func show<T: UIViewController & BaseViewProtocol>(parent: T, source: UIView, entries: [PopOverEntry], id: String = "default") -> PopOverViewController {
+        return show(presenter: parent, parent: parent, source: source, entries: entries, id: id)
     }
     
-    public static func show(presenter: UIViewController, parent: BaseViewProtocol, source: UIView, entries: [PopOverEntry], id: String = "default") {
+    public static func show(presenter: UIViewController, parent: BaseViewProtocol, source: UIView, entries: [PopOverEntry], id: String = "default") -> PopOverViewController {
         let popupController = PopOverViewController()
         popupController.id = id
         popupController.parentView = parent
@@ -34,6 +34,7 @@ public class PopOverViewController: UIViewController, BaseViewProtocol {
         popupController.popoverPresentationController?.permittedArrowDirections = resolveArrowDirection(source: source, entries: entries)
         popupController.popoverPresentationController?.delegate = popupController
         presenter.present(popupController, animated: true, completion: nil)
+        return popupController
     }
     
     private static let ENTRY_HEIGHT = 48
