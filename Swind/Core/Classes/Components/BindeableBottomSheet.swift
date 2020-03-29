@@ -47,6 +47,8 @@ public class BindeableBottomSheet: UIViewController {
     
     private var scrollview: UIScrollView?
     
+    public var onDismiss: (() -> Void)?
+    
     init(hasFullscreen: Bool = true, outsideTapCloses: Bool = false) {
         self.hasFullscreen = hasFullscreen
         self.isPannable = false // TODO: Add proper support for pannable
@@ -61,6 +63,10 @@ public class BindeableBottomSheet: UIViewController {
         self.canBounce = true // TODO: Add proper support for canBounce
         self.outsideTapCloses = false
         super.init(coder: aDecoder)
+    }
+    
+    public func setOnDismissListener(_ listener: (() -> Void)?) {
+        self.onDismiss = listener
     }
     
     public func setContent(_ content: UIView) {
@@ -149,11 +155,18 @@ public class BindeableBottomSheet: UIViewController {
             }) { [weak self] finish in
                 if finish {
                     guard let strongSelf = self else { return }
-                    strongSelf.dismiss(animated: false, completion: completion)
+                    strongSelf.dismiss(animated: false) {
+                        guard let strongSelf = self else { return }
+                        strongSelf.onDismiss?()
+                        completion?()
+                    }
                 }
             }
         } else {
-            super.dismiss(animated: false, completion: completion)
+            super.dismiss(animated: false) {
+                self.onDismiss?()
+                completion?()
+            }
         }
     }
     
