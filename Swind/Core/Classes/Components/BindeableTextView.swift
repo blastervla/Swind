@@ -7,7 +7,10 @@
 
 import UIKit
 
-public class BindeableTextView: UITextView, UITextViewDelegate {
+/// This class won't work when assigning a custom delegate to it.
+/// If you need to do so, please use the generic `swind_`
+/// functions instead of the `BindeableTextView` specific ones.
+public class BindeableTextView: UITextView {
 
     /// Closure to be called when text changes, with the new text as an
     /// argument.
@@ -46,7 +49,7 @@ public class BindeableTextView: UITextView, UITextViewDelegate {
         self.bindeeSelector = bindeeSelector
     }
     
-    public func textViewDidChange(_ textView: UITextView) {
+    public override func textViewDidChange(_ textView: UITextView) {
         self.onTextChange?(textView.text)
         self.bindee?.perform(self.bindeeSelector, with: textView.text ?? "")
     }

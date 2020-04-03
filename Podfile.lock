@@ -613,25 +613,25 @@ PODS:
   - RxRelay (5.1.0):
     - RxSwift (~> 5)
   - RxSwift (5.1.0)
-  - Swind (0.13.0):
-    - Swind/Checkbox (= 0.13.0)
-    - Swind/Core (= 0.13.0)
-    - Swind/Material (= 0.13.0)
-    - Swind/Popover (= 0.13.0)
-    - Swind/Reactive (= 0.13.0)
-  - Swind/Checkbox (0.13.0):
+  - Swind (0.15.2):
+    - Swind/Checkbox (= 0.15.2)
+    - Swind/Core (= 0.15.2)
+    - Swind/Material (= 0.15.2)
+    - Swind/Popover (= 0.15.2)
+    - Swind/Reactive (= 0.15.2)
+  - Swind/Checkbox (0.15.2):
     - M13Checkbox
     - Swind/Core
-  - Swind/Core (0.13.0)
-  - Swind/Material (0.13.0):
+  - Swind/Core (0.15.2)
+  - Swind/Material (0.15.2):
     - MaterialComponents
     - Swind/Core
-  - Swind/Popover (0.13.0):
+  - Swind/Popover (0.15.2):
     - MaterialComponents
     - Swind/Core
     - Swind/Material
     - Swind/Reactive
-  - Swind/Reactive (0.13.0):
+  - Swind/Reactive (0.15.2):
     - RxCocoa (~> 5)
     - RxSwift (~> 5)
     - Swind/Core
@@ -669,8 +669,8 @@ SPEC CHECKSUMS:
   RxCocoa: 13d2a4d7546a34b8ececae8c281e4ea1dbb94f2b
   RxRelay: a168bd6caf712d00c676ac344e9295afc93b418e
   RxSwift: ad5874f24bb0dbffd1e9bb8443604e3578796c7a
-  Swind: fb2847c91ad11aa8ef8cf315edd96bdbc91d1cfe
+  Swind: c05d7b81d589bfdb8c4e08e89094354751d75d61
 
 PODFILE CHECKSUM: f236ec883317eda73f50e809b2352dd4baf25371
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.0

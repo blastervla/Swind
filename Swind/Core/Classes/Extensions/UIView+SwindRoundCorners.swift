@@ -1,5 +1,5 @@
 //
-//  UIView+Swind.swift
+//  UIViewSwindRoundCorners+Swind.swift
 //  Swind
 //
 //  Created by Vladimir Pomsztein on 23/03/2020.

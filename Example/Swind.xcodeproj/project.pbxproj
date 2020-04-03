@@ -340,11 +340,17 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Swind_Example/Pods-Swind_Example-resources.sh",
+				"${PODS_ROOT}/../Swind/Core/Classes/Components/BindeableBottomSheet.xib",
+				"${PODS_ROOT}/../Swind/Core/Assets/Resources/Assets.xcassets",
+				"${PODS_CONFIGURATION_BUILD_DIR}/Swind/SwindCore.bundle",
 				"${PODS_ROOT}/../Swind/Popover/Classes/PopOverViewController.xib",
 				"${PODS_ROOT}/../Swind/Popover/Classes/Support/PopOverEntryView.xib",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/BindeableBottomSheet.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Assets.car",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwindCore.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PopOverViewController.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PopOverEntryView.nib",
 			);

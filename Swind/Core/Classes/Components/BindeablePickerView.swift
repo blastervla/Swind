@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class BindeablePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
+public class BindeablePickerView: UIPickerView {
 
     /// Closure to be called when item is picked, with the picked item's
     /// `componentIndex` and `rowIndex` passed as arguments (in that order)
@@ -53,20 +53,20 @@ public class BindeablePickerView: UIPickerView, UIPickerViewDelegate, UIPickerVi
         self.bindeeSelector = bindeeSelector
     }
     
-    public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    public override func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.onPick?(component, row)
         self.bindee?.perform(self.bindeeSelector, with: NSNumber(value: component), with: NSNumber(value: row))
     }
 
-    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    public override func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return values.count // number of session
     }
     
-    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    public override func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return self.values[component].count
     }
     
-    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    public override func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return values[component][row]
     }
 }
