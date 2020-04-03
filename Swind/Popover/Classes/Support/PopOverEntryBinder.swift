@@ -15,7 +15,8 @@ class PopOverEntryBinder: BaseBinderProtocol {
             parent.onClick?(view.button, viewModel)
         }
         
-        viewModel.onChange = {
+        viewModel.onChange(view) { [weak view] in
+            guard let view = view else { return }
             view.button.setTitle(viewModel.text, for: .normal)
         }
         viewModel.notifyChange()

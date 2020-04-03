@@ -13,6 +13,10 @@ class ShowRobotBinder: BaseBinderProtocol {
     static func bind(parent: BaseViewProtocol, view: Any, viewModel: BaseViewModel) {
         guard let view = view as? ShowRobotController, let viewModel = viewModel as? RobotModel else { return }
         
-        view.label.text = viewModel.toString()
+        viewModel.onChange(view) { [weak view] in
+            guard let view = view else { return }
+            view.label.text = viewModel.toString()
+        }
+        viewModel.notifyChange()
     }
 }

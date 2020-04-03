@@ -30,7 +30,8 @@ class RobotBinder: BaseBinderProtocol {
         view.specialAbilitiesContainer.bind(viewModel.observableSpecialAbilities, parent: parent, layoutNibName: String(describing: RobotSpecialAbilityLayout.self), bundle: .init(for: self), binder: SpecialAbilityBinder.self)
         view.personalityTextView.bind(viewModel, #selector(viewModel.setPersonality))
         
-        viewModel.onChange = {
+        viewModel.onChange(view) { [weak view] in
+            guard let view = view else { return }
             view.nameErrorLabel.text = viewModel.nameErrorText
             view.genderTextField.text = viewModel.gender
             view.strengthScoreLabel.text = viewModel.strengthText
