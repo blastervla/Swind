@@ -8,7 +8,7 @@
 import UIKit
 
 public class BindeableBottomSheet: UIViewController {
-
+    
     @IBOutlet private weak var navbarBackgroundView: UIView!
     @IBOutlet private weak var navbarSeparatorView: UIView!
     @IBOutlet private weak var modalCloseButton: UIImageView!
@@ -144,7 +144,10 @@ public class BindeableBottomSheet: UIViewController {
     }
     
     override public func dismiss(animated: Bool, completion: (() -> Void)? = nil) {
-        self.presentedViewController?.dismiss(animated: animated, completion: nil)
+        guard self.presentedViewController == nil else {
+            self.presentedViewController?.dismiss(animated: animated, completion: nil)
+            return
+        }
         if animated {
             self.isClosing = true
             UIView.animate(withDuration: 0.2, animations: {[weak self] in
@@ -156,8 +159,6 @@ public class BindeableBottomSheet: UIViewController {
                 if finish {
                     guard let strongSelf = self else { return }
                     strongSelf.dismiss(animated: false) {
-                        guard let strongSelf = self else { return }
-                        strongSelf.onDismiss?()
                         completion?()
                     }
                 }
