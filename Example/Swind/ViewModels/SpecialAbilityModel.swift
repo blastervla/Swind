@@ -15,6 +15,7 @@ class SpecialAbilityModel: BaseViewModel {
     
     @objc func setSpecialAbility(_ text: String) {
         self.specialAbilityText = text
+        self.notifyChange()
     }
     
     @objc func setType(_ type: NSNumber) {

@@ -6,7 +6,23 @@
 //  Copyright © 2020 Vladimir Pomsztein. All rights reserved.
 //
 
-open class BaseViewModel: NSObject {
+protocol ParentAware {
+    var parentNotify: (() -> Void)? { get set }
+    var isFirstOrderKind: Bool { get }
+}
+
+open class BaseViewModel: NSObject, ParentAware {
+    
+    /// Enum depicting the Notification Cascade strategies
+    public enum NotificationCascadeType {
+        /// No child objects will report to this View Model when changes occur
+        case none
+        /// Only first order child objects will report to this View Model when changes occur.
+        /// That is, only direct variables in the hierarchy (not embedded in Arrays or Dictionaries)
+        case firstOrder
+        /// All child BaseViewModel objects will notify its parent when changes are applied to them
+        case all
+    }
     
     private class ChangeEntryWeakReferenceWrapper {
         weak var view: AnyObject?
@@ -26,7 +42,34 @@ open class BaseViewModel: NSObject {
         }
     }
 
+    /// Variable stating which Notification Cascade strategy should be used.
+    /// Defaults to None, to provide better general case-use performance.
+    ///
+    /// - Note: You should override this as an instance member as its value
+    ///         will be used when the model initializes.
+    open var notificationCascadeType: NotificationCascadeType {
+        return .none
+    }
+    var parentNotify: (() -> Void)?
+    var isFirstOrderKind: Bool = true
+    
     private var onChanges: [ChangeEntry] = []
+    
+    public override init() {
+        super.init()
+        
+        guard self.notificationCascadeType != .none else { return }
+        let mirror = Mirror(reflecting: self)
+
+        for child in mirror.children {
+            if var model = child.value as? ParentAware, (model.isFirstOrderKind || self.notificationCascadeType == .all) {
+                model.parentNotify = { [weak self] in
+                    guard let strongSelf = self else { return }
+                    strongSelf.notifyChange()
+                }
+            }
+        }
+    }
     
     open func isSameAs(model: BaseViewModel) -> Bool {
         return self == model.self
@@ -68,6 +111,8 @@ open class BaseViewModel: NSObject {
     /// as to avoid any performance penalties.
     public func notifyChange() {
         var toRemove = [Int]()
+        
+        parentNotify?()
         for i in 0..<self.onChanges.count {
             let onChange = self.onChanges[i]
             if onChange.views.allSatisfy({ $0.view == nil }) {

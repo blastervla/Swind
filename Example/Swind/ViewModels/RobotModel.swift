@@ -10,6 +10,11 @@ import UIKit
 import Swind
 
 class RobotModel: BaseViewModel {
+    override var notificationCascadeType: BaseViewModel.NotificationCascadeType {
+        get { return .all }
+        set {}
+    }
+    
     var name: String = ""
     var gender: String = ""
     var wantsToBeARealKid: Bool = false

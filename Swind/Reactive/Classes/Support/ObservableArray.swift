@@ -23,7 +23,13 @@ public struct ArrayChangeEvent {
     }
 }
 
-public struct ObservableArray<Element>: ExpressibleByArrayLiteral {
+public struct ObservableArray<Element>: ExpressibleByArrayLiteral, ParentAware {
+    var parentNotify: (() -> Void)?
+    
+    var isFirstOrderKind: Bool {
+        return false
+    }
+    
     public typealias EventType = ArrayChangeEvent
     
     internal var eventSubject: PublishSubject<EventType>
@@ -123,6 +129,9 @@ extension ObservableArray: MutableCollection {
     ///
     /// - Parameter newElement: The new element that should be added
     public mutating func append(_ newElement: Element) {
+        if var newElement = newElement as? ParentAware {
+            newElement.parentNotify = self.parentNotify
+        }
         elements.append(newElement)
         arrayDidChange(ArrayChangeEvent(inserted: [elements.count - 1]))
     }
@@ -132,6 +141,11 @@ extension ObservableArray: MutableCollection {
     ///
     /// - Parameter newElements: The new elements that should be added
     public mutating func append<S : Sequence>(contentsOf newElements: S) where S.Iterator.Element == Element {
+        elements.forEach { it in
+            if var newElement = it as? ParentAware {
+                newElement.parentNotify = self.parentNotify
+            }
+        }
         let end = elements.count
         elements.append(contentsOf: newElements)
         guard end != elements.count else {
@@ -155,6 +169,11 @@ extension ObservableArray: MutableCollection {
         guard !newElements.isEmpty else {
             return
         }
+        elements.forEach { it in
+            if var newElement = it as? ParentAware {
+                newElement.parentNotify = self.parentNotify
+            }
+        }
         let end = elements.count
         elements.append(contentsOf: newElements)
         arrayDidChange(ArrayChangeEvent(inserted: Array(end..<elements.count)))
@@ -176,6 +195,9 @@ extension ObservableArray: MutableCollection {
     /// - Parameter newElement: Element to insert
     /// - Parameter i: Index at which the new element should be inserted
     public mutating func insert(_ newElement: Element, at i: Int) {
+        if var newElement = newElement as? ParentAware {
+            newElement.parentNotify = self.parentNotify
+        }
         elements.insert(newElement, at: i)
         arrayDidChange(ArrayChangeEvent(inserted: [i]))
     }
@@ -215,6 +237,11 @@ extension ObservableArray: MutableCollection {
         guard !newElements.isEmpty else {
             return
         }
+        elements.forEach { it in
+            if var newElement = it as? ParentAware {
+                newElement.parentNotify = self.parentNotify
+            }
+        }
         elements.insert(contentsOf: newElements, at: i)
         arrayDidChange(ArrayChangeEvent(inserted: Array(i..<i + newElements.count)))
     }
@@ -242,8 +269,15 @@ extension ObservableArray: RangeReplaceableCollection {
     /// - Parameter newCollection: The new elements to be used in replacement
     ///                            of the old ones.
     public mutating func replaceSubrange<C : Collection>(_ subRange: Range<Int>, with newCollection: C) where C.Iterator.Element == Element {
+        newCollection.forEach { it in
+            if var newElement = it as? ParentAware {
+                newElement.parentNotify = self.parentNotify
+            }
+        }
+        
         let oldCount = elements.count
         elements.replaceSubrange(subRange, with: newCollection)
+        
         let first = subRange.lowerBound
         let newCount = elements.count
         let end = first + (newCount - oldCount) + subRange.count
@@ -278,6 +312,9 @@ extension ObservableArray: Sequence {
             return elements[index]
         }
         set {
+            if var newElement = newValue as? ParentAware {
+                newElement.parentNotify = self.parentNotify
+            }
             elements[index] = newValue
             if index == elements.count {
                 arrayDidChange(ArrayChangeEvent(inserted: [index]))
@@ -292,6 +329,11 @@ extension ObservableArray: Sequence {
             return elements[bounds]
         }
         set {
+            newValue.forEach { it in
+                if var newElement = it as? ParentAware {
+                    newElement.parentNotify = self.parentNotify
+                }
+            }
             elements[bounds] = newValue
             let first = bounds.lowerBound
             arrayDidChange(ArrayChangeEvent(inserted: Array(first..<first + newValue.count),
