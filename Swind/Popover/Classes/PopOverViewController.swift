@@ -93,9 +93,17 @@ public class PopOverViewController: UIViewController, BaseViewProtocol {
         }
     }
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.popoverPresentationController?.containerView?.alpha = 0
+    }
+    
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
+        UIView.animate(withDuration: 0.025) {
+            self.popoverPresentationController?.containerView?.alpha = 1
+        }
         UIView.animate(withDuration: 0.150) {
             self.preferredContentSize = CGSize(width: max(self.preferredWidth, 200), height: self.stackView.systemLayoutSizeFitting(.zero).height)
         }
