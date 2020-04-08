@@ -268,7 +268,7 @@ public class BindeableBottomSheet: UIViewController {
             }
             
             if (self.canBounce || !self.isAnimating && newY > self.view.frame.height * (1 - startingThreshold)) {
-                self.topConstraint.constant += translation.y
+                self.topConstraint.constant = max(self.topConstraint.constant + translation.y, 0)
                 if (!self.canBounce && !self.isPannable) { // We don't allow the modal to be above the startingThreshold
                     self.topConstraint.constant = max(self.view.frame.height * (1 - startingThreshold), self.topConstraint.constant)
                 }

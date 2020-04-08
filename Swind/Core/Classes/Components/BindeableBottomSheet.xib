@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,7 +36,7 @@
                     </constraints>
                 </view>
                 <view verifyAmbiguity="off" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wmx-P2-0xr">
-                    <rect key="frame" x="0.0" y="44" width="414" height="496"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="574"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uG2-gy-Fla">
                             <rect key="frame" x="4" y="4" width="42" height="42"/>
@@ -92,7 +90,7 @@
                 <constraint firstItem="Wmx-P2-0xr" firstAttribute="top" secondItem="mFd-li-DPp" secondAttribute="top" id="3vw-Ip-Mjp"/>
                 <constraint firstItem="V0d-Yx-NUx" firstAttribute="top" secondItem="Wmx-P2-0xr" secondAttribute="top" id="91l-Sb-1yN"/>
                 <constraint firstItem="V0d-Yx-NUx" firstAttribute="leading" secondItem="mFd-li-DPp" secondAttribute="leading" id="Raf-wQ-oNm"/>
-                <constraint firstItem="Wmx-P2-0xr" firstAttribute="height" secondItem="mFd-li-DPp" secondAttribute="height" id="WhK-ij-5JJ"/>
+                <constraint firstItem="Wmx-P2-0xr" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="WhK-ij-5JJ"/>
                 <constraint firstItem="mFd-li-DPp" firstAttribute="trailing" secondItem="V0d-Yx-NUx" secondAttribute="trailing" id="g0H-zc-x0N"/>
                 <constraint firstItem="mFd-li-DPp" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="Wmx-P2-0xr" secondAttribute="bottom" id="hz7-AU-uAt"/>
                 <constraint firstItem="mFd-li-DPp" firstAttribute="trailing" secondItem="Wmx-P2-0xr" secondAttribute="trailing" id="mfo-dq-3if"/>
