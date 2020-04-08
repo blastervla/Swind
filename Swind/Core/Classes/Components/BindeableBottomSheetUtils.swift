@@ -71,10 +71,11 @@ extension BindeableBottomSheet {
                                                 preferredContentHeight: preferredContentHeight,
                                                 completion: completion)
         
-        sheet.setContent(controller)
-        
         // Bind
+        controller.view.layoutIfNeeded()
         binder.bind(parent: parent, view: controller, viewModel: model)
+        
+        sheet.setContent(controller)
         
         return sheet
     }
@@ -142,10 +143,11 @@ extension BindeableBottomSheet {
                                                 preferredContentHeight: preferredContentHeight,
                                                 completion: completion)
         
-        sheet.setContent(view)
-        
         // Bind
+        view.layoutIfNeeded()
         binder.bind(parent: parent, view: view, viewModel: model)
+        
+        sheet.setContent(view)
         
         return sheet
     }
@@ -218,11 +220,11 @@ extension BindeableBottomSheet {
                                                         completion: (() -> Void)?) -> BindeableBottomSheet {
         let sheet = BindeableBottomSheet(hasFullscreen: hasFullScreen, outsideTapCloses: outsideTapCloses)
         
-        let cgSize = view.systemLayoutSizeFitting(.zero)
+        let cgSize = view.systemLayoutSizeFitting(UIScreen.main.bounds.size)
         let roughContentHeight = min(preferredContentHeight ?? Float(cgSize.height), Float(UIScreen.main.bounds.height))
-        sheet.endingThreshold = min(CGFloat(roughContentHeight + 300) / UIScreen.main.bounds.height, 0.95)
-        sheet.startingThreshold = min(CGFloat(roughContentHeight + 150) / UIScreen.main.bounds.height, 0.9)
-        sheet.collapseThreshold = min(CGFloat(roughContentHeight) / UIScreen.main.bounds.height, 0.8)
+        sheet.endingThreshold = min(CGFloat(roughContentHeight + 200) / UIScreen.main.bounds.height, 0.95)
+        sheet.startingThreshold = min(CGFloat(roughContentHeight + 125) / UIScreen.main.bounds.height, 0.9)
+        sheet.collapseThreshold = min(CGFloat(roughContentHeight + 50) / UIScreen.main.bounds.height, 0.8)
         sheet.view.backgroundColor = UIColor.clear
         sheet.modalPresentationStyle = .overFullScreen
         
