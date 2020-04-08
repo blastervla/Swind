@@ -22,6 +22,8 @@ public class BindeableBottomSheet: UIViewController {
     @IBOutlet private weak var topNavbarSeparatorConstraint: NSLayoutConstraint!
     @IBOutlet private weak var closeButtonHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet private weak var contentContainerBottomConstraint: NSLayoutConstraint!
+    
     private var blurEffectView: UIVisualEffectView?
     
     private var carryOverTranslation: CGFloat = 0.0
@@ -101,11 +103,34 @@ public class BindeableBottomSheet: UIViewController {
         
         self.scrollview = scrollview
         scrollview.isScrollEnabled = false
+        scrollview.bounces = false
+        scrollview.showsVerticalScrollIndicator = false
+        scrollview.showsHorizontalScrollIndicator = false
+        let recognizer = UIPanGestureRecognizer(target: self, action: #selector(scrollViewPan))
+        recognizer.cancelsTouchesInView = false
+        recognizer.delegate = self
+//        scrollview.panGestureRecognizer.canPrevent(recognizer)
+        scrollview.addGestureRecognizer(recognizer)
+    }
+    
+    @objc private func scrollViewPan(_ gestureRecognizer: UIPanGestureRecognizer) {
+//        if self.scrollview?.isScrollEnabled == true {
+//            self.scrollview?.contentOffset.y -= gestureRecognizer.translation(in: self.modalView).y
+//        }
+        if (self.scrollview?.isScrollEnabled != true || self.scrollview?.contentOffset.y ?? 0 <= 0) {
+            self.panRecognizer(recognizer: gestureRecognizer)
+        }
+//        print(gestureRecognizer.translation(in: self.modalView))
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         setCloseImage(UIImage(named: "ic_swind_close", in: Bundle.swindBundle(), compatibleWith: nil))
+        if #available(iOS 11.0, *) {
+            self.contentContainerBottomConstraint.constant = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     override public func viewWillAppear(_ animated: Bool) {
@@ -240,21 +265,26 @@ public class BindeableBottomSheet: UIViewController {
         let newY = y + translation.y
         
         self.isTouchingModal = true
-        if (self.hasFullscreen && newY < self.view.frame.height * (1 - endingThreshold)) {
+        if (newY > y && self.isFullscreen) {
+            self.isFullscreen = false
+            self.scrollview?.bounces = false
+            self.setToStartingPosition(time: 0.2)
+        } else if (self.hasFullscreen && newY < self.view.frame.height * (1 - endingThreshold)) {
             // Animate to top
             self.scrollview?.isScrollEnabled = true
+            self.scrollview?.bounces = true
             self.isFullscreen = true
             UIView.animate(withDuration: 0.2, animations: { [weak self] in
                 guard let strongSelf = self else { return }
                 strongSelf.prepareUIForFullscreen()
                 strongSelf.topConstraint.constant = 0
-                strongSelf.blurEffectView?.alpha = 0.0
+//                strongSelf.blurEffectView?.alpha = 0.0
                 strongSelf.view.layoutIfNeeded()
             }) { [weak self] (_: Bool) in
                 guard let strongSelf = self else { return }
                 strongSelf.fullscreenBlock?()
             }
-            self.modalView.removeGestureRecognizer(recognizer)
+//            self.modalView.removeGestureRecognizer(recognizer)
         } else if (self.view.frame.height - self.topConstraint.constant > self.view.frame.height * endingThreshold && velocity.y > 1200) {
             self.setToStartingPosition(time: 0.1)
         } else {
@@ -293,15 +323,24 @@ public class BindeableBottomSheet: UIViewController {
     }
     
     private func prepareUIForFullscreen() {
-        self.navbarSeparatorView.alpha = 1.0
-        self.navbarBackgroundView.alpha = 1.0
-        self.modalCloseButton.alpha = 1.0
-        self.modalCloseButton.isUserInteractionEnabled = true
-        self.topContainerConstraint.constant = 0.0
-        self.topNavbarSeparatorConstraint.constant = 30.0
-        self.closeButtonHeightConstraint.constant = 42.0
+//        self.navbarSeparatorView.alpha = 1.0
+//        self.navbarBackgroundView.alpha = 1.0
+//        self.modalCloseButton.alpha = 1.0
+//        self.modalCloseButton.isUserInteractionEnabled = true
+//        self.topContainerConstraint.constant = 0.0
+//        self.topNavbarSeparatorConstraint.constant = 30.0
+//        self.closeButtonHeightConstraint.constant = 42.0
         
-        self.modalHandle.alpha = 0.0
+//        self.modalHandle.alpha = 0.0
     }
 
+}
+
+extension BindeableBottomSheet: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        if self.isFullscreen && otherGestureRecognizer.view is UIScrollView {
+            return true;
+        }
+        return false
+    }
 }

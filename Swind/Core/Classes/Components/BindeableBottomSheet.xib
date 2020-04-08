@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="closeButtonHeightConstraint" destination="Lcj-gx-ty0" id="ede-UK-dgZ"/>
                 <outlet property="contentContainer" destination="0gL-EW-moI" id="3QR-38-LaW"/>
+                <outlet property="contentContainerBottomConstraint" destination="ANc-f4-zgq" id="5HC-3Z-c6l"/>
                 <outlet property="modalCloseButton" destination="uG2-gy-Fla" id="wMe-oh-9AT"/>
                 <outlet property="modalHandle" destination="eC2-fq-DIk" id="qfU-2X-kWJ"/>
                 <outlet property="modalView" destination="Wmx-P2-0xr" id="9Jj-Mx-hjn"/>
@@ -61,7 +62,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="445" translatesAutoresizingMaskIntoConstraints="NO" id="0gL-EW-moI" userLabel="Container View">
-                            <rect key="frame" x="0.0" y="51" width="414" height="445"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="445"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                     </subviews>
@@ -78,7 +79,7 @@
                         <constraint firstItem="b0Q-ux-s8G" firstAttribute="top" secondItem="uG2-gy-Fla" secondAttribute="bottom" constant="4" id="dmJ-81-uke"/>
                         <constraint firstItem="uG2-gy-Fla" firstAttribute="top" secondItem="Wmx-P2-0xr" secondAttribute="top" constant="4" id="f1Y-HK-tLs"/>
                         <constraint firstItem="b0Q-ux-s8G" firstAttribute="leading" secondItem="Wmx-P2-0xr" secondAttribute="leading" id="rOP-fE-2nk"/>
-                        <constraint firstItem="0gL-EW-moI" firstAttribute="top" secondItem="b0Q-ux-s8G" secondAttribute="bottom" id="rcN-bb-aJR"/>
+                        <constraint firstItem="0gL-EW-moI" firstAttribute="top" secondItem="Wmx-P2-0xr" secondAttribute="top" id="rcN-bb-aJR"/>
                     </constraints>
                     <connections>
                         <outletCollection property="gestureRecognizers" destination="jJS-uC-Uur" appends="YES" id="JOr-yt-2gH"/>
