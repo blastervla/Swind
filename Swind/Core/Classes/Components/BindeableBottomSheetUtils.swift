@@ -64,16 +64,16 @@ extension BindeableBottomSheet {
                             outsideTapCloses: Bool = false,
                             preferredContentHeight: Float? = nil,
                             completion: (() -> Void)? = nil) -> BindeableBottomSheet {
+        // Bind
+        controller.view.layoutIfNeeded()
+        binder.bind(parent: parent, view: controller, viewModel: model)
+        
         let sheet = createAndPresentBottomSheet(presenter: presenter,
                                                 layout: controller.view,
                                                 hasFullScreen: hasFullScreen,
                                                 outsideTapCloses: outsideTapCloses,
                                                 preferredContentHeight: preferredContentHeight,
                                                 completion: completion)
-        
-        // Bind
-        controller.view.layoutIfNeeded()
-        binder.bind(parent: parent, view: controller, viewModel: model)
         
         sheet.setContent(controller)
         
@@ -136,16 +136,16 @@ extension BindeableBottomSheet {
                             outsideTapCloses: Bool = false,
                             preferredContentHeight: Float? = nil,
                             completion: (() -> Void)? = nil) -> BindeableBottomSheet {
+        // Bind
+        view.layoutIfNeeded()
+        binder.bind(parent: parent, view: view, viewModel: model)
+        
         let sheet = createAndPresentBottomSheet(presenter: presenter,
                                                 layout: view,
                                                 hasFullScreen: hasFullScreen,
                                                 outsideTapCloses: outsideTapCloses,
                                                 preferredContentHeight: preferredContentHeight,
                                                 completion: completion)
-        
-        // Bind
-        view.layoutIfNeeded()
-        binder.bind(parent: parent, view: view, viewModel: model)
         
         sheet.setContent(view)
         
