@@ -34,7 +34,7 @@ public extension UIView {
     ///         whichever method you like to create the binding, or even
     ///         both, none will be ignored (ie: if you setup both, you'll
     ///         actually receive both callbacks).
-    public var swind_onLongTap: (() -> Void)? {
+    var swind_onLongTap: (() -> Void)? {
         get {
             return objc_getAssociatedObject(self, &UIView.onLongTapConstantKey) as? (() -> Void)
         }
@@ -124,7 +124,7 @@ public extension UIView {
     ///
     /// - Parameter bindee: The object that contains the `bindeeSeelctor`
     /// - Parameter bindeeSelector: Selector to be called on `bindee` upon tap.
-    public func swind_bindForTap(_ bindee: NSObject, _ bindeeSelector: Selector) {
+    func swind_bindForTap(_ bindee: NSObject, _ bindeeSelector: Selector) {
         self.addSwindTargetIfNeeded()
         self.swind_tapBindee = bindee
         self.swind_tapBindeeSelector = bindeeSelector
@@ -138,7 +138,7 @@ public extension UIView {
     ///
     /// - Parameter bindee: The object that contains the `bindeeSeelctor`
     /// - Parameter bindeeSelector: Selector to be called on `bindee` upon long tap.
-    public func swind_bindForLongTap(_ bindee: NSObject, _ bindeeSelector: Selector) {
+    func swind_bindForLongTap(_ bindee: NSObject, _ bindeeSelector: Selector) {
         self.addSwindTargetIfNeeded()
         self.swind_longTapBindee = bindee
         self.swind_longTapBindeeSelector = bindeeSelector
