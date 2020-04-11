@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Swind'
-  s.version          = '0.16.1'
+  s.version          = '1.0.0'
   s.summary          = 'Databinding for Swift iOS projects, made simple.'
 
 # This description is used to generate tags and improve search results.
