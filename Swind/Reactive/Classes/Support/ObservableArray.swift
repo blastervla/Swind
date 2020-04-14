@@ -24,7 +24,7 @@ public struct ArrayChangeEvent {
 }
 
 public struct ObservableArray<Element>: ExpressibleByArrayLiteral, ParentAware {
-    var parentNotify: (() -> Void)?
+    public var parentNotify: (() -> Void)?
     
     var isFirstOrderKind: Bool {
         return false
@@ -141,9 +141,12 @@ extension ObservableArray: MutableCollection {
     ///
     /// - Parameter newElements: The new elements that should be added
     public mutating func append<S : Sequence>(contentsOf newElements: S) where S.Iterator.Element == Element {
-        elements.forEach { it in
+        let newElements = newElements.map { it -> Element in
             if var newElement = it as? ParentAware {
                 newElement.parentNotify = self.parentNotify
+                return newElement as! Element
+            } else {
+                return it
             }
         }
         let end = elements.count
@@ -169,9 +172,12 @@ extension ObservableArray: MutableCollection {
         guard !newElements.isEmpty else {
             return
         }
-        elements.forEach { it in
+        let newElements = newElements.map { it -> Element in
             if var newElement = it as? ParentAware {
                 newElement.parentNotify = self.parentNotify
+                return newElement as! Element
+            } else {
+                return it
             }
         }
         let end = elements.count
@@ -237,9 +243,12 @@ extension ObservableArray: MutableCollection {
         guard !newElements.isEmpty else {
             return
         }
-        elements.forEach { it in
+        let newElements = newElements.map { it -> Element in
             if var newElement = it as? ParentAware {
                 newElement.parentNotify = self.parentNotify
+                return newElement as! Element
+            } else {
+                return it
             }
         }
         elements.insert(contentsOf: newElements, at: i)

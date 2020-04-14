@@ -42,31 +42,31 @@ open class BaseViewModel: NSObject, ParentAware {
         }
     }
 
-    /// Variable stating which Notification Cascade strategy should be used.
-    /// Defaults to None, to provide better general case-use performance.
-    ///
-    /// - Note: You should override this as an instance member as its value
-    ///         will be used when the model initializes.
-    open var notificationCascadeType: NotificationCascadeType {
-        return .none
-    }
-    var parentNotify: (() -> Void)?
+    public var parentNotify: (() -> Void)?
     var isFirstOrderKind: Bool = true
     
     private var onChanges: [ChangeEntry] = []
     
+    /// Method stating which objects should have Notification Cascading.
+    ///
+    /// - Note: All objects stated here should be declared as `@objc dynamic`
+    open func notificationCascadeObjects() -> [String] {
+        return []
+    }
+    
     public override init() {
         super.init()
         
-        guard self.notificationCascadeType != .none else { return }
         let mirror = Mirror(reflecting: self)
-
+        let notificationCascadeObjs = self.notificationCascadeObjects()
+        
         for child in mirror.children {
-            if var model = child.value as? ParentAware, (model.isFirstOrderKind || self.notificationCascadeType == .all) {
+            if let key = child.label, notificationCascadeObjs.contains(key), var model = child.value as? ParentAware {
                 model.parentNotify = { [weak self] in
                     guard let strongSelf = self else { return }
                     strongSelf.notifyChange()
                 }
+                self.setValue(model, forKey: key)
             }
         }
     }
@@ -103,6 +103,14 @@ open class BaseViewModel: NSObject, ParentAware {
     ///
     public func onChange(_ views: [AnyObject], _ onChange: @escaping () -> Void) {
         self.onChanges += [ChangeEntry(views: views, onChangeClosure: onChange)]
+    }
+    
+    /// Method to remove all previous bindings
+    ///
+    /// - Note: You most probably want to call this when binding
+    ///         views that will be recycled
+    public func removeAllBindings() {
+        self.onChanges = []
     }
     
     /// Method to be called whenever a UI change should be impacted.

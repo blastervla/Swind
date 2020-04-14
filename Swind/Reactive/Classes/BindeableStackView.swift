@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import RxSwift
 
 public class BindeableStackView: UIStackView {
 
     var nibName: String = ""
     var bundle: Bundle?
     var binder: BaseBinderProtocol.Type?
+    
+    var subscriptionDisposable: Disposable?
     
     /// This function binds the view so that, when the entries change,
     /// it'll automatically update its contents so as to reflect the data
@@ -34,6 +37,7 @@ public class BindeableStackView: UIStackView {
         self.binder = binder
         var entries = entries
         
+        self.subscriptionDisposable?.dispose()
         _ = entries.rx_elements().subscribe(onNext: { [weak self] (array) in
             guard let strongSelf = self else { return }
             strongSelf.updateView(array, parent: parent)
