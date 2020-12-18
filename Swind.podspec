@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Swind'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of Swind.'
+  s.summary          = 'Databinding for Swift iOS projects, made simple.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,25 +18,49 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  Swind aims to provide a simple, yet effective databinding solution for iOS
+  projects. Take your MVVM development to the next level with Swind!
                        DESC
 
-  s.homepage         = 'https://github.com/Vladimir Pomsztein/Swind'
+  s.homepage         = 'https://github.com/blastervla/Swind.git'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Vladimir Pomsztein' => 'vladimir.pomsztein@mercadolibre.com' }
-  s.source           = { :git => 'https://github.com/Vladimir Pomsztein/Swind.git', :tag => s.version.to_s }
+  s.author           = { 'Vladimir Pomsztein' => 'blastervla@gmail.com' }
+  s.source           = { :git => 'https://github.com/blastervla/Swind.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.license      = { :type => "Creative Commons Attribution 4.0", :file => "LICENSE" }
 
-  s.source_files = 'Swind/Classes/**/*'
+  s.ios.deployment_target = '10.0'
+  s.requires_arc = true
+  s.static_framework = true
+  s.swift_version = '5.0'
   
-  # s.resource_bundles = {
-  #   'Swind' => ['Swind/Assets/*.png']
-  # }
+  s.subspec 'Core' do |ss|
+    ss.source_files = "Swind/Core/Classes/**/*.{h,m,swift}"
+    # ss.resources    = "Swind/Core/Classes/**/*.xib", "Swind/Core/Assets/**/*.xcassets"
+  end
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.subspec 'Reactive' do |ss|
+    ss.source_files = "Swind/Reactive/Classes/**/*.{h,m,swift}"
+    # ss.resources    = "Swind/Reactive/Classes/**/*.xib", "Swind/Reactive/Assets/**/*.xcassets"
+
+    ss.dependency 'RxSwift', '~> 5'
+    ss.dependency 'RxCocoa', '~> 5'
+  end
+
+  s.subspec 'Checkbox' do |ss|
+    ss.source_files = "Swind/Checkbox/Classes/**/*.{h,m,swift}"
+    # ss.resources    = "Swind/Checkbox/Classes/**/*.xib", "Swind/Checkbox/Assets/**/*.xcassets"
+
+    ss.dependency 'M13Checkbox'
+  end
+
+  s.subspec 'Material' do |ss|
+    ss.source_files = "Swind/Material/Classes/**/*.{h,m,swift}"
+    # ss.resources    = "Swind/Material/Classes/**/*.xib", "Swind/Material/Assets/**/*.xcassets"
+
+    ss.dependency 'MaterialComponents'
+  end
+
 end

@@ -1,0 +1,6 @@
+framework module Swind {
+  umbrella header "Swind-umbrella.h"
+
+  export *
+  module * { export * }
+}

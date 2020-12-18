@@ -1,0 +1,6 @@
+framework module Pods_Swind_Tests {
+  umbrella header "Pods-Swind_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

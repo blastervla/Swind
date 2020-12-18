@@ -1,7 +1,12 @@
 use_frameworks!
 
+platform :ios, '10.0'
+
 target 'Swind_Example' do
-  pod 'Swind', :path => '../'
+  pod 'Swind/Core', :path => '../'
+  pod 'Swind/Checkbox', :path => '../'
+  pod 'Swind/Material', :path => '../'
+  pod 'Swind/Reactive', :path => '../'
 
   target 'Swind_Tests' do
     inherit! :search_paths
